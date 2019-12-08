@@ -23,6 +23,6 @@ module.exports = {
       icon: 'fa-twitter',
       name: 'Twitter',
       url: 'https://twitter.com/webappseed',
-    }
+    },
   ],
-};
+}

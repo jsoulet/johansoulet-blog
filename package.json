@@ -27,6 +27,7 @@
     "smoothscroll-polyfill": "^0.4.4"
   },
   "scripts": {
+    "lint": "eslint ./",
     "deploy": "gatsby clean && gatsby build && node deploy",
     "start": "gatsby clean && gatsby develop",
     "develop": "gatsby develop",
@@ -39,7 +40,23 @@
   "devDependencies": {
     "gh-pages": "^2.0.1",
     "prettier": "^1.17.0",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-react-app": "^5.1.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-cypress": "^2.7.0",
+    "eslint-plugin-flowtype": "^4.5.2",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "eslint-plugin-standard": "^4.0.1"
   },
   "keywords": [
     "gatsby",

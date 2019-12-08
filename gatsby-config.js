@@ -1,12 +1,12 @@
-const config = require('./config');
+const config = require('./config')
 
 module.exports = {
   pathPrefix: config.pathPrefix,
   siteMetadata: {
-		title: 'Gatsby Html5up - Open-Source app with Spectral design',
+    title: 'Gatsby Html5up - Open-Source app with Spectral design',
     description: `Open-Source Gatsby Starter`,
     author: `@Sm0keDev`,
-		siteUrl: `https://gatsby-html5up-spectral.appseed.us`,
+    siteUrl: `https://gatsby-html5up-spectral.appseed.us`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -26,4 +26,4 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
   ],
-};
+}

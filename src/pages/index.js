@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import Layout from '../components/Layout';
+import Layout from '../components/Layout'
 
-import Scroll from '../components/Scroll';
+import Scroll from '../components/Scroll'
 
-import pic1 from '../assets/images/pic01.jpg';
-import pic2 from '../assets/images/pic02.jpg';
-import pic3 from '../assets/images/pic03.jpg';
-import config from '../../config';
+import pic1 from '../assets/images/pic01.jpg'
+import pic2 from '../assets/images/pic02.jpg'
+import pic3 from '../assets/images/pic03.jpg'
+
 const IndexPage = () => (
   <Layout>
     <section id="banner">
@@ -16,7 +16,8 @@ const IndexPage = () => (
           <a href="https://www.gatsbyjs.org/">Gatsby</a> HTML5Up
         </h1>
         <p>
-          <a href="https://github.com/app-generator/gatsby-html5up-spectral">Open-Source</a> app with Spectral design
+          <a href="https://github.com/app-generator/gatsby-html5up-spectral">Open-Source</a> app
+          with Spectral design
         </p>
         <ul className="actions special">
           <li>
@@ -44,11 +45,9 @@ const IndexPage = () => (
             eget augue amet aliquet nisl cep donec
           </h2>
           <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet
-            eleifend
+            Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend
             <br />
-            fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus
-            ullamcorper.
+            fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.
           </p>
         </header>
         <ul className="icons major">
@@ -83,8 +82,8 @@ const IndexPage = () => (
             sed ullamcorper
           </h2>
           <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec hendrerit
-            imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
+            Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend
+            fringilla nullam aenean mi ligula.
           </p>
         </div>
       </section>
@@ -99,8 +98,8 @@ const IndexPage = () => (
             elementum magna
           </h2>
           <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec hendrerit
-            imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
+            Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend
+            fringilla nullam aenean mi ligula.
           </p>
         </div>
       </section>
@@ -115,8 +114,8 @@ const IndexPage = () => (
             sed condimentum
           </h2>
           <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec hendrerit
-            imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
+            Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend
+            fringilla nullam aenean mi ligula.
           </p>
         </div>
       </section>
@@ -127,54 +126,52 @@ const IndexPage = () => (
         <header className="major">
           <h2>Accumsan mus tortor nunc aliquet</h2>
           <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet
-            eleifend
+            Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend
             <br />
-            fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus
-            ullamcorper.
+            fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.
           </p>
         </header>
         <ul className="features">
           <li className="icon fa-paper-plane">
             <h3>Arcu accumsan</h3>
             <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
-              tincidunt nullam amet leo Aenean ligula consequat consequat.
+              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
+              leo Aenean ligula consequat consequat.
             </p>
           </li>
           <li className="icon solid fa-laptop">
             <h3>Ac Augue Eget</h3>
             <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
-              tincidunt nullam amet leo Aenean ligula consequat consequat.
+              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
+              leo Aenean ligula consequat consequat.
             </p>
           </li>
           <li className="icon solid fa-code">
             <h3>Mus Scelerisque</h3>
             <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
-              tincidunt nullam amet leo Aenean ligula consequat consequat.
+              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
+              leo Aenean ligula consequat consequat.
             </p>
           </li>
           <li className="icon solid fa-headphones-alt">
             <h3>Mauris Imperdiet</h3>
             <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
-              tincidunt nullam amet leo Aenean ligula consequat consequat.
+              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
+              leo Aenean ligula consequat consequat.
             </p>
           </li>
           <li className="icon fa-heart">
             <h3>Aenean Primis</h3>
             <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
-              tincidunt nullam amet leo Aenean ligula consequat consequat.
+              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
+              leo Aenean ligula consequat consequat.
             </p>
           </li>
           <li className="icon fa-flag">
             <h3>Tortor Ut</h3>
             <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem
-              tincidunt nullam amet leo Aenean ligula consequat consequat.
+              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
+              leo Aenean ligula consequat consequat.
             </p>
           </li>
         </ul>
@@ -186,8 +183,7 @@ const IndexPage = () => (
         <header>
           <h2>Arcue ut vel commodo</h2>
           <p>
-            Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet
-            eleifend fringilla.
+            Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.
           </p>
         </header>
         <ul className="actions stacked">
@@ -205,6 +201,6 @@ const IndexPage = () => (
       </div>
     </section>
   </Layout>
-);
+)
 
-export default IndexPage;
+export default IndexPage
