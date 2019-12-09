@@ -12,18 +12,13 @@ const IndexPage = () => (
   <Layout>
     <section id="banner">
       <div className="inner">
-        <h1>
-          <a href="https://www.gatsbyjs.org/">Gatsby</a> HTML5Up
-        </h1>
-        <p>
-          <a href="https://github.com/app-generator/gatsby-html5up-spectral">Open-Source</a> app
-          with Spectral design
-        </p>
+        <h1>Johan Soulet</h1>
+        <p>Développeur JavaScript sénior à Nantes</p>
         <ul className="actions special">
           <li>
             <Scroll type="id" element="one">
               <a href="/#" className="button primary">
-                Explore
+                Contactez moi
               </a>
             </Scroll>
           </li>
@@ -31,7 +26,7 @@ const IndexPage = () => (
       </div>
       <Scroll type="id" element="one">
         <a href="#one" className="more">
-          Learn More
+          En savoir plus
         </a>
       </Scroll>
     </section>
@@ -40,14 +35,16 @@ const IndexPage = () => (
       <div className="inner">
         <header className="major">
           <h2>
-            Arcu aliquet vel lobortis ata nisl
-            <br />
-            eget augue amet aliquet nisl cep donec
+            Artisan du code, je vous accompagne dans la réalisation de projets numériques uniques
           </h2>
           <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend
-            <br />
-            fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.
+            Issu d'une formation d'ingénieur, j'ai forgé mon expérience de développeur au sein de
+            startups, groupes internationaux et agences de l'écosystème Nantais. En misant sur la qualité,
+            je veille à créer des sites web et applications robustes, réduisant ainsi le time-to-market et 
+            les couts de maintenance.
+            <br/>
+            Grâce aux méthodes agiles, les projets dans lequel je m'investi sont centrés autour de l'utilisateur
+            et se concentrent sur la 
           </p>
         </header>
         <ul className="icons major">
@@ -124,7 +121,7 @@ const IndexPage = () => (
     <section id="three" className="wrapper style3 special">
       <div className="inner">
         <header className="major">
-          <h2>Accumsan mus tortor nunc aliquet</h2>
+          <h2>Mes compétences</h2>
           <p>
             Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend
             <br />
@@ -132,43 +129,26 @@ const IndexPage = () => (
           </p>
         </header>
         <ul className="features">
-          <li className="icon fa-paper-plane">
-            <h3>Arcu accumsan</h3>
+          <li className="icon solid fa-code">
+            <h3>Développement de sites web</h3>
             <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
-              leo Aenean ligula consequat consequat.
+              Durant toute la conception, le moteur principal reste l'expérience utilisateur en se
+              concentrant sus les fonctionalités ayant le plus de valeur ajoutée.
             </p>
           </li>
           <li className="icon solid fa-laptop">
-            <h3>Ac Augue Eget</h3>
+            <h3>Gestion de projets agile</h3>
             <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
-              leo Aenean ligula consequat consequat.
+              De l'analyse du besoin, au conseil stratégique, en passant par la rédaction de
+              spécification technique et fonctionnelles ou la formation des utilisateurs
             </p>
           </li>
-          <li className="icon solid fa-code">
-            <h3>Mus Scelerisque</h3>
-            <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
-              leo Aenean ligula consequat consequat.
-            </p>
+          <li className="icon solid fa-paper-plane">
+            <h3>Référencement SEO</h3>
+            <p>A quoi bon être présent si vous n'êtes pas visible ?</p>
           </li>
-          <li className="icon solid fa-headphones-alt">
-            <h3>Mauris Imperdiet</h3>
-            <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
-              leo Aenean ligula consequat consequat.
-            </p>
-          </li>
-          <li className="icon fa-heart">
-            <h3>Aenean Primis</h3>
-            <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
-              leo Aenean ligula consequat consequat.
-            </p>
-          </li>
-          <li className="icon fa-flag">
-            <h3>Tortor Ut</h3>
+          <li className="icon solid fa-graduation-cap">
+            <h3>Formation JavaScript</h3>
             <p>
               Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
               leo Aenean ligula consequat consequat.

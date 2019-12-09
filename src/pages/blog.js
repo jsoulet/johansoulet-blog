@@ -1,10 +1,32 @@
 import React from 'react'
-
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import PostList from '../components/PostList'
 
-const IndexPage = () => (
+export const pageQuery = graphql`
+  {
+    allMarkdownRemark {
+      nodes {
+        id
+        excerpt
+        frontmatter {
+          date
+          title
+          path
+        }
+      }
+    }
+  }
+`
+
+const BlogPostList = ({ data }) => (
   <Layout fullMenu>
-    <article id="main">
+    <section className="wrapper style5">
+      <div className="inner">
+        <PostList posts={data.allMarkdownRemark.nodes}></PostList>
+      </div>
+    </section>
+    {/* <article id="main">
       <header>
         <h1>Generic Page</h1>
         <p>Aliquam ut ex ut interdum donec amet imperdiet eleifend</p>
@@ -55,8 +77,8 @@ const IndexPage = () => (
           </p>
         </div>
       </section>
-    </article>
+    </article> */}
   </Layout>
 )
 
-export default IndexPage
+export default BlogPostList
