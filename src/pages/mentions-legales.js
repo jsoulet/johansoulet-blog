@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
 
-const IndexPage = () => (
+const TermsPage = () => (
   <Layout fullMenu>
     <article id="main">
       <header>
@@ -39,4 +39,4 @@ const IndexPage = () => (
   </Layout>
 )
 
-export default IndexPage
+export default TermsPage

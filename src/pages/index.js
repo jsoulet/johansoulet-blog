@@ -4,10 +4,6 @@ import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import Scroll from '../components/Scroll'
 
-import pic1 from '../assets/images/pic01.jpg'
-import pic2 from '../assets/images/pic02.jpg'
-import pic3 from '../assets/images/pic03.jpg'
-
 export const pageQuery = graphql`
   {
     allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 3) {
@@ -15,7 +11,7 @@ export const pageQuery = graphql`
         id
         excerpt(pruneLength: 100)
         frontmatter {
-          date(formatString: "DD MMMM YYYY")
+          date(formatString: "D MMMM YYYY")
           title
           path
           featuredImage
@@ -52,21 +48,27 @@ const IndexPage = ({ data }) => (
     <section id="one" className="wrapper style1 special">
       <div className="inner">
         <header className="major">
-          <h2>Artisan du code, je crée des projets web et mobile qui rendent le monde meilleur</h2>
+          <h2>Artisan du code, je crée des projets qui rendent le monde meilleur</h2>
           <p>
             <br />
-            Grâce aux méthodes agiles, les projets dans lequel je m'investi sont centrés autour de
-            l'utilisateur.
+            Développeur nantais, j’ai participé au développement de startups dynamiques et rejoint
+            des projets soutenus par des groupes internationaux. J’aime contribuer à des projets qui
+            mettent l’humain au centre de l’innovation et qui ont impact positif sur leur
+            environnement.
+            <br />
+            <br />
+            Une fois la journée terminée, j’aime cuisiner, dénicher le gif parfait, partir à
+            l’aventure…
           </p>
         </header>
         <ul className="icons major">
           <li>
-            <span className="icon fa-gem major style1">
+            <span className="icon solid fa-seedling major style1">
               <span className="label">Lorem</span>
             </span>
           </li>
           <li>
-            <span className="icon fa-heart major style2">
+            <span className="icon solid fa-heart major style2">
               <span className="label">Ipsum</span>
             </span>
           </li>
@@ -86,11 +88,11 @@ const IndexPage = ({ data }) => (
         </header>
       </div>
       <PostList posts={data.allMdx.nodes}></PostList>
-      <div className="major">
+      <footer className="major">
         <Link to="/blog" className="button">
           Tous mes articles
         </Link>
-      </div>
+      </footer>
     </section>
 
     <section id="three" className="wrapper style3 special">
@@ -98,18 +100,15 @@ const IndexPage = ({ data }) => (
         <header className="major">
           <h2>Mes prestations</h2>
           <p>
-            Issu d'une formation ingénieur, j'ai forgé mon expérience de développeur au sein de
-            startups et groupes internationaux de l'écosystème Nantais. En misant sur la qualité, je
-            veille à créer des sites web et applications robustes, qui permettent de réduire le
-            time-to-market et les couts de maintenance.
+            Votre projet est unique, il nécessite donc une écoute attentive avant de s'y lancer tête
+            baissée
           </p>
         </header>
         <ul className="features">
           <li className="icon solid fa-code">
             <h3>Développement de sites web</h3>
             <p>
-              Durant toute la conception, le moteur principal reste l'expérience utilisateur en se
-              concentrant sus les fonctionalités ayant le plus de valeur ajoutée.
+              Un code de qualité permet de réduire le time-to-market et les couts de maintenance
             </p>
           </li>
           <li className="icon solid fa-laptop">
@@ -137,10 +136,10 @@ const IndexPage = ({ data }) => (
     <section id="cta" className="wrapper style4">
       <div className="inner">
         <header>
-          <h2>Contactez moi</h2>
+          <h2>Discutons autour d'un café</h2>
           <p>
-            Pour une demande de devis de développement web, mobile ou bien d’autres informations,
-            vous pouvez entrer en contact via le formulaire ci-contre.
+            Si vous êtes à Nantes, je serai ravi de discuter de votre projet autour d'un café voire
+            d'une bière suivant le moment de la journée.
           </p>
         </header>
         <div className="actions">
@@ -166,7 +165,7 @@ const IndexPage = ({ data }) => (
               <div className="col-12">
                 <ul className="actions">
                   <li>
-                    <input type="submit" value="Send Message" className="primary" />
+                    <input type="submit" value="Envoyer" className="primary" />
                   </li>
                 </ul>
               </div>

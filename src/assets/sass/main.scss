@@ -370,6 +370,10 @@
 		}
 	}
 
+	footer.major {
+		margin: (_size(element-margin) * 1.75) 0 0 0;
+	}
+
 /* Form */
 
 	form {
@@ -1060,7 +1064,7 @@
 		@include vendor('align-items', 'center');
 		@include vendor('display', 'flex');
 		border-bottom: none;
-		text-align: left;
+		text-align: left;		
 		.image {
 			@include vendor('order', '1');
 			border-radius: 0;
