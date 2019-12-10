@@ -44,14 +44,11 @@ class Layout extends Component {
         `}
         render={data => (
           <>
-            <Helmet
-              title={data.site.siteMetadata.title}
-              meta={[
-                { name: 'description', content: data.site.siteMetadata.description },
-                { name: 'keywords', content: data.site.siteMetadata.keywords },
-              ]}
-            >
+            <Helmet defaultTitle={data.site.siteMetadata.title}>
               <html lang="en" />
+              <title>{data.site.siteMetadata.title}</title>
+              <meta name="description" content={data.site.siteMetadata.description} />
+              <meta name="keywords" content={data.site.siteMetadata.keywords} />
             </Helmet>
             <div
               className={cn({ 'main-body': true, landing: isLanding, 'is-preload': isPreloaded })}
