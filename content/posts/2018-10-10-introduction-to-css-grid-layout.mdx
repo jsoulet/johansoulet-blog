@@ -87,7 +87,7 @@ All direct children of the grid container are now grid items, and the blog parts
 
 As we can see, the mock-up is based on a 12-column and 3-row template. We will use the grid-row-start/end and grid-column-start/end to dispatch the different parts of the blog in their respective rows and columns.
 
-```
+```css
     body {
        **display: grid;**
      }
@@ -119,7 +119,7 @@ Those 4 properties can be a positive or a negative integer. If negative, it coun
 
 Shorthands also exist to reduce the number of lines in the CSS file:
 
-```
+```css
     header {
        grid-column: 1;
        grid-column-end: 13;
@@ -153,19 +153,19 @@ Shorthands also exist to reduce the number of lines in the CSS file:
 
 Now that we’ve set up the columns, we need to define the width and height of the different blocks. _grid-template-column/row_ will help us do that.
 
-```
-    .gridContainer {
-       grid-template-columns: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
-     }
+```css
+.gridContainer {
+  grid-template-columns: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
+}
 ```
 
 As it’s a cumbersome way to write the property, it can be simplified with the _repeat()_ function
 
-```
-    .gridContainer {
-      grid-template-columns: **repeat(12, 60px)**;
-      grid-template-rows: 90px auto 90px;
-    }
+```css
+.gridContainer {
+  grid-template-columns: * * repeat(12, 60px) * *;
+  grid-template-rows: 90px auto 90px;
+}
 ```
 
 ## Grid area
@@ -175,74 +175,82 @@ They can be placed in the grid using grid-column, grid-row, and grid-area as we 
 
 Another way to arrange them in the layout is using the **_grid-template-area _**property. To do that, a good practice is to name each area of the grid
 
-```
-    header { grid-area:header; }
-     nav { grid-area:nav; }
-     main { grid-area:main; }
-     footer { grid-area:footer; }
+```css
+header {
+  grid-area: header;
+}
+nav {
+  grid-area: nav;
+}
+main {
+  grid-area: main;
+}
+footer {
+  grid-area: footer;
+}
 ```
 
 Then, using the grid-template-area, it becomes possible to define how the areas are organized inside the container using their name and specify the number of column and row they occupy.
 
-```
-    grid-template-areas:
-     ‘header header header header header header header header header  header header header’
-     ‘nav nav nav main main main main main main main main main’
-     ‘nav nav nav footer footer footer footer footer footer footer footer footer’;
+```css
+grid-template-areas:
+  ‘header header header header header header header header header header header header’
+  ‘nav nav nav main main main main main main main main main’
+  ‘nav nav nav footer footer footer footer footer footer footer footer footer’;
 ```
 
 Unfortunately, I didn’t find a way to use the `repeat` function to simplify the property, resulting in something not really maintainable. Though, for this specific template, the power of a 12 column template is not used. That’s why the number of columns can be reduced and their width increased.
 
-```
-    .gridContainer {
-       grid-template-columns: repeat(4, 240px);
-       grid-template-rows: 90px auto 90px;
-       grid-template-areas:
-         ‘header header header header’
-         ‘nav main main main’
-         ‘nav footer footer footer’
-     }
+```css
+.gridContainer {
+  grid-template-columns: repeat(4, 240px);
+  grid-template-rows: 90px auto 90px;
+  grid-template-areas:
+    ‘header header header header’
+    ‘nav main main main’
+    ‘nav footer footer footer’;
+}
 ```
 
 To increase readability, an idea can be to enforce that all areas are named with the same number of letter. Therefore it can create a visual link between the property of _grid-template-areas_, and the actual result on the screen.
 
-```
-    .gridContainer {
-       grid-template-columns: repeat(4, 240px);
-       grid-template-rows: 90px auto 90px;
-       grid-template-areas:
-         ‘head head head head’
-         ‘navi main main main’
-         ‘navi foot foot foot’
-     }
+```css
+.gridContainer {
+  grid-template-columns: repeat(4, 240px);
+  grid-template-rows: 90px auto 90px;
+  grid-template-areas:
+    ‘head head head head’
+    ‘navi main main main’
+    ‘navi foot foot foot’;
+}
 ```
 
 ## Responsive example
 
 Using the grid template makes the responsive design easier. Indeed, thanks to media queries, it is possible to define different templates depending on the screen width and re-use the grid item’s name we have previously defined.
 
-```
-    @media only screen and (max-width: 599px){
-      .gridContainer {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 90px auto auto 90px;
-        grid-template-areas:
-          ‘header header header header’
-          ‘main main main main’
-          ‘nav nav nav nav’
-          ‘footer footer footer footer’
-       }
-     }
+```css
+@media only screen and (max-width: 599px) {
+  .gridContainer {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 90px auto auto 90px;
+    grid-template-areas:
+      ‘header header header header’
+      ‘main main main main’
+      ‘nav nav nav nav’
+      ‘footer footer footer footer’;
+  }
+}
 
-    @media only screen and (min-width: 600px) and (max-width: 900px) {
-       .gridContainer {
-         grid-template-columns: repeat(4, 1fr);
-         grid-template-areas:
-           ‘header header header header’
-           ‘main main main main’
-           ‘nav nav footer footer’
-       }
-    }
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .gridContainer {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      ‘header header header header’
+      ‘main main main main’
+      ‘nav nav footer footer’;
+  }
+}
 ```
 
 <Image

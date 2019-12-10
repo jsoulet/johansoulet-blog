@@ -24,17 +24,6 @@ module.exports = {
           `gatsby-remark-images`,
           'gatsby-remark-slug',
           // 'gatsby-remark-autolink-headings',
-        ],
-        defaultLayouts: {
-          // posts: require.resolve('./src/templates/blogPost.js'),
-          default: require.resolve('./src/templates/blogPost.js'),
-        },
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -72,6 +61,16 @@ module.exports = {
             },
           },
         ],
+        defaultLayouts: {
+          // posts: require.resolve('./src/templates/blogPost.js'),
+          default: require.resolve('./src/templates/blogPost.js'),
+        },
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [],
       },
     },
     {
@@ -87,7 +86,8 @@ module.exports = {
       },
     },
 
-    // 'gatsby-transformer-remark',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
