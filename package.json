@@ -14,8 +14,8 @@
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
     "classnames": "^2.2.6",
-    "ftp-deploy": "^2.3.3",
     "gatsby": "^2.4.3",
+    "gatsby-background-image": "^0.9.11",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.1.1",
     "gatsby-plugin-mdx": "^1.0.59",
@@ -43,7 +43,6 @@
   },
   "scripts": {
     "lint": "eslint ./",
-    "deploy": "gatsby clean && gatsby build && node deploy",
     "start": "gatsby clean && gatsby develop",
     "develop": "gatsby develop",
     "build": "npm run clean && gatsby build",
