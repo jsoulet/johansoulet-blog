@@ -11,7 +11,7 @@ const PostListItem = ({ title, date, excerpt, image, path }) => {
       <div className="content">
         <h3>{title}</h3>
         <em>{date}</em>
-        <div>{excerpt}</div>
+        <p>{excerpt}</p>
       </div>
     </Link>
   )

@@ -1637,7 +1637,7 @@
 
 		.more {
 			@include vendor('transition', ('transform 0.75s ease', 'opacity 0.75s ease'));
-			@include vendor('transition-delay', '3.5s');
+			@include vendor('transition-delay', '1.25s');
 			@include vendor('transform', 'translateY(0)');
 			border: none;
 			bottom: 0;
@@ -1675,7 +1675,7 @@
 		&:after {
 			@include vendor('pointer-events', 'none');
 			@include vendor('transition', 'opacity #{_duration(fadein)} ease-in-out');
-			@include vendor('transition-delay', '1.25s');
+			//@include vendor('transition-delay', '0.25s');
 			content: '';
 			background: _palette(bg);
 			display: block;
@@ -1773,7 +1773,7 @@
 /* Main */
 
 	#main {
-		> header {
+		> header, .header {
 			@include padding(12em, 0);
 			@include vendor('background-image', ('linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))', 'url("../images/banner.jpg")'));
 			background-attachment: fixed;
@@ -1823,7 +1823,7 @@
 
 	body.is-mobile {
 		#main {
-			> header {
+			> header, .header  {
 				background-attachment: scroll;
 			}
 		}
