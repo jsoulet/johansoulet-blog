@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import config from '../../config'
 export default function Footer() {
   return (
@@ -16,9 +17,9 @@ export default function Footer() {
         })}
       </ul>
       <ul className="copyright">
-        <li>&copy; AppSeed</li>
+        <li>&copy; Johan Soulet</li>
         <li>
-          Design: <a href="http://html5up.net">HTML5 UP</a>
+          <Link to="/mentions-legales">Mentions légales</Link>
         </li>
       </ul>
     </footer>

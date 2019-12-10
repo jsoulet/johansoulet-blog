@@ -1,23 +1,41 @@
 import React from 'react'
-
+import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
-
+import PostList from '../components/PostList'
 import Scroll from '../components/Scroll'
 
 import pic1 from '../assets/images/pic01.jpg'
 import pic2 from '../assets/images/pic02.jpg'
 import pic3 from '../assets/images/pic03.jpg'
 
-const IndexPage = () => (
-  <Layout>
+export const pageQuery = graphql`
+  {
+    allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 3) {
+      nodes {
+        id
+        excerpt(pruneLength: 100)
+        frontmatter {
+          date(formatString: "DD MMMM YYYY")
+          title
+          path
+          featuredImage
+          chapo
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }) => (
+  <Layout isLanding>
     <section id="banner">
       <div className="inner">
         <h1>Johan Soulet</h1>
         <p>Développeur JavaScript sénior à Nantes</p>
         <ul className="actions special">
           <li>
-            <Scroll type="id" element="one">
-              <a href="/#" className="button primary">
+            <Scroll type="id" element="cta">
+              <a href="/#cta" className="button primary">
                 Contactez moi
               </a>
             </Scroll>
@@ -34,17 +52,11 @@ const IndexPage = () => (
     <section id="one" className="wrapper style1 special">
       <div className="inner">
         <header className="major">
-          <h2>
-            Artisan du code, je vous accompagne dans la réalisation de projets numériques uniques
-          </h2>
+          <h2>Artisan du code, je crée des projets web et mobile qui rendent le monde meilleur</h2>
           <p>
-            Issu d'une formation d'ingénieur, j'ai forgé mon expérience de développeur au sein de
-            startups, groupes internationaux et agences de l'écosystème Nantais. En misant sur la qualité,
-            je veille à créer des sites web et applications robustes, réduisant ainsi le time-to-market et 
-            les couts de maintenance.
-            <br/>
-            Grâce aux méthodes agiles, les projets dans lequel je m'investi sont centrés autour de l'utilisateur
-            et se concentrent sur la 
+            <br />
+            Grâce aux méthodes agiles, les projets dans lequel je m'investi sont centrés autour de
+            l'utilisateur.
           </p>
         </header>
         <ul className="icons major">
@@ -67,65 +79,29 @@ const IndexPage = () => (
       </div>
     </section>
 
-    <section id="two" className="wrapper alt style2">
-      <section className="spotlight">
-        <div className="image">
-          <img src={pic1} alt="" />
-        </div>
-        <div className="content">
-          <h2>
-            Magna primis lobortis
-            <br />
-            sed ullamcorper
-          </h2>
-          <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend
-            fringilla nullam aenean mi ligula.
-          </p>
-        </div>
-      </section>
-      <section className="spotlight">
-        <div className="image">
-          <img src={pic2} alt="" />
-        </div>
-        <div className="content">
-          <h2>
-            Tortor dolore feugiat
-            <br />
-            elementum magna
-          </h2>
-          <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend
-            fringilla nullam aenean mi ligula.
-          </p>
-        </div>
-      </section>
-      <section className="spotlight">
-        <div className="image">
-          <img src={pic3} alt="" />
-        </div>
-        <div className="content">
-          <h2>
-            Augue eleifend aliquet
-            <br />
-            sed condimentum
-          </h2>
-          <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend
-            fringilla nullam aenean mi ligula.
-          </p>
-        </div>
-      </section>
+    <section id="two" className="wrapper special style2">
+      <div className="inner">
+        <header className="major">
+          <h2>Mes dernières publications</h2>
+        </header>
+      </div>
+      <PostList posts={data.allMdx.nodes}></PostList>
+      <div className="major">
+        <Link to="/blog" className="button">
+          Tous mes articles
+        </Link>
+      </div>
     </section>
 
     <section id="three" className="wrapper style3 special">
       <div className="inner">
         <header className="major">
-          <h2>Mes compétences</h2>
+          <h2>Mes prestations</h2>
           <p>
-            Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend
-            <br />
-            fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.
+            Issu d'une formation ingénieur, j'ai forgé mon expérience de développeur au sein de
+            startups et groupes internationaux de l'écosystème Nantais. En misant sur la qualité, je
+            veille à créer des sites web et applications robustes, qui permettent de réduire le
+            time-to-market et les couts de maintenance.
           </p>
         </header>
         <ul className="features">
@@ -140,19 +116,19 @@ const IndexPage = () => (
             <h3>Gestion de projets agile</h3>
             <p>
               De l'analyse du besoin, au conseil stratégique, en passant par la rédaction de
-              spécification technique et fonctionnelles ou la formation des utilisateurs
+              spécifications techniques.
             </p>
           </li>
           <li className="icon solid fa-paper-plane">
             <h3>Référencement SEO</h3>
-            <p>A quoi bon être présent si vous n'êtes pas visible ?</p>
+            <p>
+              Rendez vous visible grâce à l'optimisation de votre site web pour les moteurs de
+              recherche
+            </p>
           </li>
           <li className="icon solid fa-graduation-cap">
             <h3>Formation JavaScript</h3>
-            <p>
-              Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet
-              leo Aenean ligula consequat consequat.
-            </p>
+            <p>Apprennez à concevoir des sites internet et applications web dynamiques</p>
           </li>
         </ul>
       </div>
@@ -161,23 +137,42 @@ const IndexPage = () => (
     <section id="cta" className="wrapper style4">
       <div className="inner">
         <header>
-          <h2>Arcue ut vel commodo</h2>
+          <h2>Contactez moi</h2>
           <p>
-            Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.
+            Pour une demande de devis de développement web, mobile ou bien d’autres informations,
+            vous pouvez entrer en contact via le formulaire ci-contre.
           </p>
         </header>
-        <ul className="actions stacked">
-          <li>
-            <a href="/#" className="button fit primary">
-              Activate
-            </a>
-          </li>
-          <li>
-            <a href="/#" className="button fit">
-              Learn More
-            </a>
-          </li>
-        </ul>
+        <div className="actions">
+          <form method="post" action="#">
+            <div className="row gtr-uniform">
+              <div className="col-6 col-12-xsmall">
+                <input type="text" name="nom" id="nom" defaultValue="" placeholder="Nom" />
+              </div>
+              <div className="col-6 col-12-xsmall">
+                <input type="text" name="prénom" id="prénom" defaultValue="" placeholder="Prénom" />
+              </div>
+              <div className="col-12">
+                <input type="email" name="email" id="email" required placeholder="Email" />
+              </div>
+              <div className="col-12">
+                <textarea
+                  name="message"
+                  id="message"
+                  placeholder="Ecrivez votre message"
+                  rows="6"
+                ></textarea>
+              </div>
+              <div className="col-12">
+                <ul className="actions">
+                  <li>
+                    <input type="submit" value="Send Message" className="primary" />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   </Layout>

@@ -2,13 +2,17 @@
 path: '/blog/2016-10-04-modern-frontend-architecture'
 date: '2016-10-04'
 title: 'Modern Frontend Architecture'
+featuredImage: '/images/2016-10-04-modern-frontend-architecture/sagradafamilia.jpeg'
+chapo: 'Explore the best practices of frontend architecture nowadays with Lee Byrons talk at Fullstack Fest 2016'
 ---
 
-This article will deal with front-end architectural concepts. It is heavily based on Lee Byron’s talk from Facebook about Immutable User Interfaces, but also on UI architecture implemented at iAdvize.
+<Image src={'/images/2016-10-04-modern-frontend-architecture/sagradafamilia.jpeg'} align="left" />
+
+This article will deal with front-end architectural concepts. It is heavily based on [Lee Byron’s talk](https://www.youtube.com/watch?v=pLvrZPSzHxo) at Fullstack Fest 2016 in Barcelona about Immutable User Interfaces, but also on UI architecture implemented at iAdvize.
 
 # MVC and Rest might not be the solution
 
-Last decade, MVC and Rest reigned the software world. As the UI becomes increasingly like an installed app (see [The Front-end Is a Full-stack](https://www.youtube.com/watch?v=wtURpqTgtUs&list=PLe9psSNJBf76DOOKMkDpyo_A5PfZk7JWc&index=23), by [Luca Marchesini](https://medium.com/u/5d5628ac129c)), data flux is slowly becoming a big bowl of spaghetti. Views and models are always listening to each other and updating to adapt, so there might be unforeseen cascading side effects, the data sate is not always up to date in the entire app and the most important issue you have to deal with is “where does that change come from ?”.
+Last decade, MVC and Rest reigned the software world. As the UI becomes increasingly like an installed app (see [The Front-end Is a Full-stack](https://www.youtube.com/watch?v=wtURpqTgtUs&list=PLe9psSNJBf76DOOKMkDpyo_A5PfZk7JWc&index=23), by [Luca Marchesini](https://twitter.com/xbill82)), data flux is slowly becoming a big bowl of spaghetti. Views and models are always listening to each other and updating to adapt, so there might be unforeseen cascading side effects, the data sate is not always up to date in the entire app and the most important issue you have to deal with is “where does that change come from ?”.
 
 Another issue to consider is that even in 2016 you can’t rely on networks. Internet can be slow, you can get disconnected if you go underground… This is not our main problematic, as our users are still desktop users, with a generally good internet connexion. But as a front-end developer, it must always be kept in mind, especially if you’re building a mobile app.
 
@@ -74,4 +78,4 @@ Using this cycle app architecture has made our development process as a team eas
 This made the composition of different components all over the app way better.
 Lee finished its talk by saying “Architecture is a Tradeoff”. This solution might not be the best for your usage, and it has to be challenged. Because of what building an app involves, we discovered new ways to constantly improve it. That’s why there is no finish line on the path of software engineering, forcing us to never stop exploring and innovating.
 
-Here is Lee’s entire talk if you are curious.
+Here is [Lee’s entire talk](https://www.youtube.com/watch?v=pLvrZPSzHxo) if you are curious.

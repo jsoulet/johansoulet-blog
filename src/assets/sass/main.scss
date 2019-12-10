@@ -1059,7 +1059,8 @@
 	.spotlight {
 		@include vendor('align-items', 'center');
 		@include vendor('display', 'flex');
-
+		border-bottom: none;
+		text-align: left;
 		.image {
 			@include vendor('order', '1');
 			border-radius: 0;
@@ -1727,12 +1728,12 @@
 	#cta {
 		.inner {
 			@include vendor('display', 'flex');
-			max-width: 45em;
+			max-width: 50em;
 
 			header {
-				@include vendor('order', '1');
-				padding-right: 3em;
-				width: 70%;
+				@include vendor('order', '2');
+				padding-left: 3em;
+				width: 30%;
 
 				p {
 					color: inherit;
@@ -1740,8 +1741,8 @@
 			}
 
 			.actions {
-				@include vendor('order', '2');
-				width: 30%;
+				@include vendor('order', '1');
+				width: 70%;
 			}
 
 			@include breakpoint('<=medium') {
@@ -1749,23 +1750,18 @@
 				text-align: center;
 
 				header {
-					padding-right: 0;
+					padding-left: 0;
 					width: 100%;
 				}
 
 				.actions {
 					margin-left: auto;
 					margin-right: auto;
-					max-width: 20em;
+					max-width: none;
 					width: 100%;
 				}
 			}
 
-			@include breakpoint('<=small') {
-				.actions {
-					max-width: none;
-				}
-			}
 		}
 	}
 
@@ -1931,3 +1927,8 @@
 			}
 		}
 	}
+
+/* BREADCRUMB */
+.breadcrumb {
+	margin-bottom: 2rem;
+}

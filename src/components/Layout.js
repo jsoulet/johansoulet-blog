@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import cn from 'classnames'
 
 import '../assets/sass/main.scss'
 import Footer from './Footer'
@@ -28,7 +29,7 @@ class Layout extends Component {
   }
 
   render() {
-    const { children, fullMenu } = this.props
+    const { children, fullMenu, isLanding } = this.props
     const { isPreloaded } = this.state
     return (
       <StaticQuery
@@ -52,7 +53,9 @@ class Layout extends Component {
             >
               <html lang="en" />
             </Helmet>
-            <div className={isPreloaded ? 'landing main-body is-preload' : 'landing main-body'}>
+            <div
+              className={cn({ 'main-body': true, landing: isLanding, 'is-preload': isPreloaded })}
+            >
               <div id="page-wrapper">
                 <SideBar fullMenu={fullMenu} />
                 {children}
