@@ -1637,7 +1637,7 @@
 
 		.more {
 			@include vendor('transition', ('transform 0.75s ease', 'opacity 0.75s ease'));
-			@include vendor('transition-delay', '1.25s');
+			@include vendor('transition-delay', '0.8s');
 			@include vendor('transform', 'translateY(0)');
 			border: none;
 			bottom: 0;
