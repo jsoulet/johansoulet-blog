@@ -1,0 +1,145 @@
+---
+path: '/blog/2019-12-10-5-dark-patterns-en-react-a-eviter-et-la-solution-pour-les-refacto'
+date: '2019-12-10'
+title: '5 dark patterns en ReactJS à éviter et la solution pour les refacto'
+featuredImage: '../images/2019-12-10-5-dark-patterns-en-react-a-eviter-et-la-solution-pour-les-refacto/darkpattern.jpg'
+---
+
+ReactJS et son ecosystème sont de plus en plus installés dans l'univers du développement front-end. Cependant, de part son manque de guidelines imposées, il est un outil très permissif aux mauvaises pratiques qui sont autant de grains de sable pouvant perturber la mécanique interne du framework et lui faire perdre en performance.
+
+En identifiant et corrigeant quelques mauvaises pratiques, il est possible d'améliorer la qualité du code, la performance de l'application et l'homogénéité du projet.
+
+## 1. renderSubcomponent(): découper la fonction render en mini-fonction
+
+```jsx
+class Article extends React.Component {
+  renderDate = createdAt => {
+    return <span>Publié le ${moment(createdAt).format('DD-MM-YYYY')}</span>
+  }
+  render() {
+    const { title, createdAt, content } = this.props
+    return (
+      <div>
+        <div>{title}</div>
+        <div>{this.renderDate(createdAt)}</div>
+        <div>{content}</div>
+      </div>
+    )
+  }
+}
+```
+
+L'intention du développeur•euses est pourtant bonne : extraire une partie de la logique pour simplifier la lecture de la fonction _render()_. Malheureusement le résulat peut avoir de mauvaises influences sur les performances et sur la réutilisabilité du code.
+
+Une bonne pratique est de s'astreindre à ne déclarer qu'un seul composant par fichier : il sera d'autant plus facile à réutiliser par les autres développeur•euses de l'équipe.
+
+```jsx
+const CreatedAt = ({ createdAt }) => (
+  <span>Created at ${moment(createdAt).format('YYYY-MM-DD')}</span>
+)
+
+class Article extends React.Component {
+  render() {
+    const { title, createdAt, content } = this.props
+    return (
+      <div>
+        <div>{title}</div>
+        <CreatedAt date={createdAt} />
+        <div>{content}</div>
+      </div>
+    )
+  }
+}
+```
+
+## 2. Ne pas utiliser les PropTypes et defaultProps
+
+Le Javascript n'est pas un langage typé. Des compilateurs tels que Typescript ou Flow, ont vu le jour pour palier à ce manque. En revanche, l'apprentissage d'une nouvelle syntaxe peut complexifier l'adoption par l'équipe.
+
+La librairie [prop-types](https://fr.reactjs.org/docs/typechecking-with-proptypes.html), initialement intérgrée à React puis externalisée par la suite, est légère à installer dans un projet et permet, sur les environnements de développement, de lever des alertes si vous utilisez des composants avec des propriétés dont le type n'est pas celui déclaré. Ces alertes sont supprimées lors du build de production, et donc invisibles à l'utilisateur final. Cela ne remplace certes pas une compilation stricte, mais réduira la majeure partie des erreurs possibles.
+
+En général, si une propriété d'un composant n'est pas requise, il faudra lui définir explicitement une valeur par défaut, soit grâce à la propriété `defaultProps` du composant ou grâce aux valeurs par défaut des paramètres de fonction introduites par EcmaScript6.
+
+En étant certain que les valeurs dont vous avez besoin sont correctement définies, vous évitez ainsi l'accumulation d'assertions dans la fonction de rendu et rendez votre code plus lisible.
+
+```jsx
+import PropTypes from 'prop-types'
+
+const Greeting = ({ name = 'random stranger' }) => {
+  return <span>Hello {name}</span>
+}
+
+Greeting.propTypes = {
+  name: PropTypes.string,
+}
+```
+
+## 3. Mélanger logique métier et logique d'affichage dans le composant
+
+```jsx
+class UserCard extends Component {
+  state = { user: null }
+
+  componentDidMount() {
+    getUser().then(user => this.setState({ user }))
+  }
+
+  render() {
+    return (
+      <div>
+        <Avatar img={user.avatar} />
+        <div>{user.name}</div>
+        <div>{user.dateOfBirth}</div>
+        <div>{user.adress}</div>
+      </div>
+    )
+  }
+}
+```
+
+Le mélange de logique métier et de logique d'affichage est un raccourci souvent pris quand les développeur•euses du projet veulent "aller vite". L'application grandissante, de plus en plus de logique sera ajoutée au composant (ex : éditer le profil, afficher les derniers messages postés, envoyer un email...). D'un composant à l'origine relativement simple, on arrive à un composant faisant plusieurs centaines de lignes de code et qui sera difficile à maintenir, difficile d'anticiper les effets de bords qui peuvent s'y glisser, difficile à réutiliser dans un autre contexte... A la rigueur, la seule personne capable de le modifier sera celle qui l'a développé puisqu'elle sera la seule à avoir la vision globale.
+
+Pour éviter cette situation, il sera important, dès le début du projet, de découper la logique métier (appels à l'API, mappers...) des composants de présentation qui auront vocation à rendre les éléments du DOM.
+
+Si des traitements métiers doivent être effectués à l'échelle du composant (ex : un formulaire), il est conseillé d'avoir un container qui porte cette logique, et un composant pour l'affichage. Ainsi, le code respectera le premier principe de l'acronyme [SOLID](<https://fr.wikipedia.org/wiki/SOLID_(informatique)>) : la responsabilité unique (single responsability principle)
+
+## 4. Recréer des objets ou des tableaux durant le rendu du composant
+
+```jsx
+const EmailListContainer = ({ filter, rawEmails }) => {
+  const emails = rawEmails.filter(email => {
+    if (filter.value === READ) {
+      return email.isRead
+    }
+    if (filter.value === UNREAD) {
+      return !email.isRead
+    }
+    return true
+  })
+
+  return <EmailList emails={emails} />
+}
+```
+
+React optimise le rendu des composants en n'exécutant le rendu que si les props ou le state ont changé. Quand on passe des props de type primitif (number, string...) la comparaison stricte (ie : `===`) est suffisante et est gérée nativement par react.
+
+Quand il s'agit de tableaux ou d'objets, il faut que ceux-ci pointent vers la même référence pour ne pas être re-rendus.
+
+```bash
+{ foo: 'bar' } === { foo: 'bar' }
+>> false
+```
+
+Une solution pourrait être de surcharger la fonction `shouldComponentUpdate` du composant `EmailList` pour vérifier plus précisément si tous les valeurs de la props `email` sont identiques au précédent tableau. Mais cela complexifiera le composant EmailList, dont le rôle devrait être simplement d'afficher une liste d'email (cf : principe de responsabilité unique).
+
+Pour palier à ce problème, il conviendra de créer une fonction `filterEmails(filter, emails)` et d'en mémoiser les appels afin que la liste ne soit pas recalculée à chaque rendu. A l'échelle d'une application complète, cette pratique peut avoir un impact fort sur l'amélioration des performances.
+
+## 5. Se passer des linters et formatters statiques Eslint et Prettier
+
+Chacun et chacune a ses façons de coder préférées : Faut-il mettre ou non des points-virgule à la fin des lignes ? Faut-il 2 ou 4 espaces d'indentation ? Faut-il ajouter une virgule à la fin des tableaux ? Faut-il ordonner les imports par ordre alphabétique ?... Il n'est pas question de juger les préférences de chacun. Mais quand on travaille sur une même base de code, il peut être complexe de re-passer après un.e collègue qui aurait des pratiques différentes de la nôtre.
+
+Plutôt que d'astreindre les humains à respecter manuellement des règles d'écriture, il est préfèrable de prendre le temps de se concerter, en début du projet, sur les règles que l'on se fixe, puis intégrer Prettier et Eslint à l'IDE pour qu'ils reformattent le code à la volée lors de la sauvegarde du fichier.
+
+Le code homogène ainsi créé facilitera à la fois le développement mais aussi la code review.
+
+Pour encore plus de rigueur sur le formattage du code, l'outil [Husky](https://github.com/typicode/husky) permettra de créer des git-hooks rapidement depuis le package.json du projet et s'assurera de la cohérence du code avant de l'envoyer le sur le dépôt distant.
