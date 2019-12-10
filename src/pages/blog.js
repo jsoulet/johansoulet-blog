@@ -14,7 +14,13 @@ export const pageQuery = graphql`
           date(formatString: "D MMMM YYYY")
           title
           path
-          featuredImage
+          featuredImage {
+            childImageSharp {
+              fluid(maxHeight: 500, maxWidth: 883, fit: COVER, quality: 50) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           chapo
         }
       }

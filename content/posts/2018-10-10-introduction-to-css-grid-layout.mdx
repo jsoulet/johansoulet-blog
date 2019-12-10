@@ -2,11 +2,15 @@
 path: '/blog/2018-10-10-introduction-to-css-grid-layout'
 date: '2018-10-10'
 title: 'Introduction to CSS Grid Layout'
-featuredImage: '/images/2018-10-10-introduction-to-css-grid-layout/desk.jpeg'
+featuredImage: '../images/2018-10-10-introduction-to-css-grid-layout/desk.jpeg'
 chapo: 'Learn how to use Grid Layout, the latest big feature of CSS'
 ---
 
-<Image src={'/images/2018-10-10-introduction-to-css-grid-layout/desk.jpeg'} align="left" />
+<Image align="left">
+
+![](../images/2018-10-10-introduction-to-css-grid-layout/desk.jpeg)
+
+</Image>
 
 As frontend developers, we care a lot about keeping a clear distinction between semantic content, which is handled by the HTML code, and the style of the web pages, handled by the CSS. We know a well-organized page will improve accessibility, SEO, and UX in general.
 
@@ -30,19 +34,21 @@ Internet Explorer 10 and 11 have a partial support of the Grid Layout as they im
 
 According to [Caniuse.com](https://caniuse.com/#search=grid%20layout), more than 90% of the tracked browsers are now able to support the method.
 
-<Image
-  src="/images/2018-10-10-introduction-to-css-grid-layout/caniuse.png"
-  alt="Except for IE, all main browsers implement the Grid Layout"
-/>
+<Image>
+
+![Except for IE, all main browsers implement the Grid Layout](../images/2018-10-10-introduction-to-css-grid-layout/caniuse.png)
+
+</Image>
 
 ## Example
 
 A picture is worth a 1000 words, let’s play with the basic features by developing a simple blog layout. It is composed of 4 parts: a header, the main container, a lateral navigation bar, and a footer.
 
-<Image
-  src="/images/2018-10-10-introduction-to-css-grid-layout/layout.jpeg"
-  alt="Layout we'll implement in this article"
-/>
+<Image>
+
+![The layout implemented in this article](../images/2018-10-10-introduction-to-css-grid-layout/layout.jpeg)
+
+</Image>
 
 The HTML structure for this example will be very basic:
 
@@ -253,11 +259,13 @@ Using the grid template makes the responsive design easier. Indeed, thanks to me
 }
 ```
 
-<Image
-  src="/images/2018-10-10-introduction-to-css-grid-layout/responsive-layout.png"
-  alt="Responsive view of the template"
-  caption="Responsive view of the template"
-/>
+<Image caption="Responsive view of the template">
+
+![Responsive view of the template](../images/2018-10-10-introduction-to-css-grid-layout/responsive-layout.png)
+
+</Image>
+
+
 
 ## The Fr unit
 
@@ -265,7 +273,9 @@ The previous code sample shows a new unit that appeared with Grid Layout and has
 
 A Fr is a fractional unit that represents 1 part of the available space. Of course, fr unit can be mixed with other standard units
 
-    grid-template-column: 40px 1fr 1fr 80px;
+```css
+grid-template-column: 40px 1fr 1fr 80px;
+```
 
 This sample means the first column is 40px, the last one is 80px. The remaining space in the center is then divided into 2 columns of the same width.
 
@@ -273,31 +283,15 @@ Here is the end of this quick tour of the new opportunities that the Grid Layout
 
 Below you’ll find the CodePen with the final code for the layout. Have fun playing around with CSS Grid Layout, and maybe it can be useful in your futur projects ?
 
-<p
-  class="codepen"
-  data-height="265"
-  data-theme-id="default"
-  data-default-tab="css,result"
-  data-user="jsoulet"
-  data-slug-hash="QZbOjV"
-  style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
-  data-pen-title="CSS Grid Layout"
->
-  <span>
-    See the Pen <a href="https://codepen.io/jsoulet/pen/QZbOjV">CSS Grid Layout</a> by Johan S. (
-    <a href="https://codepen.io/jsoulet">@jsoulet</a>) on <a href="https://codepen.io">CodePen</a>.
-  </span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<iframe height="350" style="width: 100%;" scrolling="no" title="CSS Grid Layout" src="https://codepen.io/jsoulet/embed/QZbOjV?height=265&theme-id=dark&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/jsoulet/pen/QZbOjV'>CSS Grid Layout</a> by Johan S.
+  (<a href='https://codepen.io/jsoulet'>@jsoulet</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## References
 
 To dig deeper into CSS Grid Layout, here is a list of useful links:
-
 - [Grid Garden](http://cssgridgarden.com/): learn and experiment Grid Layout through a small game
-
 - [Start using CSS Grid Layout Today](https://www.youtube.com/watch?v=NoBbTAFQCxQ), a conference by Rachel Andrew at the DevFest 2017 in Nantes
-
 - [Gridbugs](https://github.com/rachelandrew/gridbugs), a list of known bugs in the browser’s implementations
-
 - [A Complete Guide to Grids](https://css-tricks.com/snippets/css/complete-guide-grid/), by CSS-Tricks

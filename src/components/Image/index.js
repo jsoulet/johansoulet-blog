@@ -2,21 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-const Image = ({ src, alt = '', caption = '', align = 'fit', className = '', ...props }) => {
+const Image = ({ children, alt = '', caption = '', align = 'fit', className = '', ...props }) => {
   return (
-    <a href={src} target="_blank" rel="noopener noreferrer">
-      <div className={cn('image box', className, align)} {...props}>
-        <img src={src} alt={alt} />
+    <div className={cn('image box', className, align)} {...props}>
+      {children}
+      {caption && (
         <div className="align-center">
           <em>{caption}</em>
         </div>
-      </div>
-    </a>
+      )}
+    </div>
   )
 }
 
 Image.propTypes = {
-  src: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   alt: PropTypes.string,
   caption: PropTypes.string,
   className: PropTypes.string,

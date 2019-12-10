@@ -1,12 +1,17 @@
 ---
+
 path: '/blog/2016-10-04-modern-frontend-architecture'
 date: '2016-10-04'
 title: 'Modern Frontend Architecture'
-featuredImage: '/images/2016-10-04-modern-frontend-architecture/sagradafamilia.jpeg'
+featuredImage: '../images/2016-10-04-modern-frontend-architecture/sagradafamilia.jpeg'
 chapo: 'Explore the best practices of frontend architecture nowadays with Lee Byrons talk at Fullstack Fest 2016'
----
+---<Image src={'../images/2016-10-04-modern-frontend-architecture/sagradafamilia.jpeg'} align="left" />
 
-<Image src={'/images/2016-10-04-modern-frontend-architecture/sagradafamilia.jpeg'} align="left" />
+<Image caption="Sagrada Familia — picture by architecturaldigest.com" align="left">
+
+![](../images/2016-10-04-modern-frontend-architecture/sagradafamilia.jpeg)
+
+</Image>
 
 This article will deal with front-end architectural concepts. It is heavily based on [Lee Byron’s talk](https://www.youtube.com/watch?v=pLvrZPSzHxo) at Fullstack Fest 2016 in Barcelona about Immutable User Interfaces, but also on UI architecture implemented at iAdvize.
 
@@ -24,7 +29,7 @@ Bringing immutability principles into the app gives garanties that the manipulat
 
 Every kind of platform (web browsers, iOS, Android…) has views and the ability to create view trees. However, their APIs are not amazing so you always need to track the reference of your elements or fetch them in a mysterious way if you want to mutate them (cheers you lovely _document.getElementById ^^_), and no one will ever be able to know it has changed. Components were born to solve that problem. They are an additional level of abstraction on top of the views, defined as pure function which always return the same view for a given data state.
 
-```
+```js
 Component(State) => View
 ```
 
@@ -40,9 +45,10 @@ Model --> Component --> View
 
 Components and state are really closed to each other, as one is in charge of rendering the data stored by the other, so if during the development process the structure of one of them is changed (ie: add a new property in the view or remove one in the model…) everything in the app has to consider those changes. This might become very tricky when the app has dozens of components receiving the whole state without describing which property they use. Therefore, components have to explicitly say what kind of data they’ll need.
 
-```javascript
+```js
 // DONT
 const myView = new Component(myState)
+
 // DO
 const myView = new Component({ myName, myPhoto })
 ```
@@ -53,7 +59,7 @@ React as PropTypes that can be deeply described, with object description, not-nu
 
 For now this architecture is simple but it can’t be altered by user interactions. To handle this job, actions are coming.
 
-```
+```js
 Action(State) => State
 ```
 
@@ -61,17 +67,23 @@ They are methods that take the current state as a parameter and return a new sta
 
 Networks can be slow or encounter latency and your users have to be aware that their actions have been taken into account by the system. Two solutions appear. The first one is _loaders_, but they can quickly become very annoying, especially if loaders block user interactions to avoid concurrency actions. The second one is _Optimistic State_: actions return a computed version of the old state based on what is supposed to be its new value, and a promise that will resolve the state server-side.
 
-```
+```js
 Action(State) => {OptimisticState, Promise(State)}
 ```
 
 Therefore, actions can be queued so there is no concurrency issue in the way data is processed.
 
-```
+```js
 Action3(Action2(Action1(State)) => State
 ```
 
 There are several ways to implement this kind of queue. At iAdvize, we rely on event dispatcher and javascript monothreading: events trigger actions and, as Javascript is not multithreaded we are sure they are processed in the right order.
+
+<Image>
+
+![](../images/2016-10-04-modern-frontend-architecture/stage.jpeg)
+
+</Image>
 
 Using this cycle app architecture has made our development process as a team easier, and improved our efficiency. We always know where changes come from. Also, as we based our development on pure functions, we are sure that nothing from the outside world will interfere in our function and it is easier to be tested.
 

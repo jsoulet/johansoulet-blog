@@ -1,13 +1,21 @@
 import React from 'react'
-import Layout from '../components/Layout'
-import Header from '../components/Header'
-import Image from '../components/Image'
-import Breadcrumb from '../components/Breadcrumb'
+import Layout from '../Layout'
+import Header from '../Header'
+import Image from '../Image'
+import Breadcrumb from '../Breadcrumb'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
 
 const shortcodes = { Image }
+
+const BlogBreadCrumb = ({ title }) => {
+  return (
+    <Breadcrumb
+      links={[{ label: 'Accueil', to: '/' }, { label: 'Blog', to: '/blog' }, { label: title }]}
+    />
+  )
+}
 
 const BlogPost = ({ data, children, pageContext, ...props }) => {
   const { frontmatter } = data.mdx
@@ -21,16 +29,13 @@ const BlogPost = ({ data, children, pageContext, ...props }) => {
         />
         <section className="wrapper style5">
           <div className="inner">
-            <Breadcrumb
-              links={[
-                { label: 'Home', to: '/' },
-                { label: 'Blog', to: '/blog' },
-                { label: frontmatter.title },
-              ]}
-            />
+            <BlogBreadCrumb title={frontmatter.title} />
+            <hr />
             <MDXProvider components={shortcodes}>
               <MDXRenderer>{data.mdx.body}</MDXRenderer>
             </MDXProvider>
+            <hr />
+            <BlogBreadCrumb title={frontmatter.title} />
           </div>
         </section>
       </article>
@@ -49,7 +54,13 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "D MMMM YYYY")
-        featuredImage
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
