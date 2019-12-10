@@ -24,12 +24,6 @@ export default function Nav({ onMenuToggle = () => {} }) {
               <li>
                 <Link to="/blog">Blog</Link>
               </li>
-              <li>
-                <Link to="/Generic">Generic Page</Link>
-              </li>
-              <li>
-                <Link to="/Elements">Elements</Link>
-              </li>
             </ul>
             <a
               className="close"
