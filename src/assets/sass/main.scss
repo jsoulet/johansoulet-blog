@@ -444,7 +444,7 @@
 	}
 
 	input[type="checkbox"],
-	input[type="radio"], {
+	input[type="radio"] {
 		@include vendor('appearance', 'none');
 		display: block;
 		float: left;
@@ -621,6 +621,14 @@
 		border: 0;
 		// display: inline-block;
 		position: relative;
+
+		> p {
+			margin: 0;
+		}
+
+		.caption {
+			font-size: 1rem;
+		}
 
 		img, .gatsby-resp-image-wrapper {
 			border-radius: 3px;
@@ -1202,7 +1210,7 @@
 			}
 
 			input[type="checkbox"],
-			input[type="radio"], {
+			input[type="radio"] {
 				& + label {
 					color: _palette($p, fg);
 

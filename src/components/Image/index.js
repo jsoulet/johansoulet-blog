@@ -7,7 +7,7 @@ const Image = ({ children, alt = '', caption = '', align = 'fit', className = ''
     <div className={cn('image box', className, align)} {...props}>
       {children}
       {caption && (
-        <div className="align-center">
+        <div className="align-center caption">
           <em>{caption}</em>
         </div>
       )}

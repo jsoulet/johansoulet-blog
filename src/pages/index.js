@@ -54,33 +54,34 @@ const IndexPage = ({ data }) => (
     <section id="one" className="wrapper style1 special">
       <div className="inner">
         <header className="major">
-          <h2>Artisan du code, je crée des projets qui rendent le monde meilleur</h2>
+          <p>MA RAISON D'ÊTRE</p>
+          <h2>Artisan du code, je donne vie à des projets qui rendent le monde meilleur</h2>
           <p>
+            Nous avons atteint les limites du monde occidental tel que nous le connaissons depuis
+            toujours. Il est donc nécessaire de questionner nos pratiques au quotidien. <br />
             <br />
-            Développeur nantais, j’ai participé au développement de startups dynamiques et rejoint
-            des projets soutenus par des groupes internationaux. J’aime contribuer à des projets qui
-            mettent l’humain au centre de l’innovation et qui ont impact positif sur leur
-            environnement.
+            En tant qu'acteur de la tech, je souhaite m'engager sur des projets qui ont un impact
+            positif sur leur environnement et placent l'humain comme point central de l'innovation.{' '}
             <br />
-            <br />
-            Une fois la journée terminée, j’aime cuisiner, dénicher le gif parfait, partir à
-            l’aventure…
+            Grâce à un apprentissage constant et une remise en question de chaque jour, je cherche à
+            devenir une personne meilleure, mais aussi à partager mes connaissances pour en faire
+            profiter la communauté qui m'entoure.{' '}
           </p>
         </header>
         <ul className="icons major">
           <li>
             <span className="icon solid fa-seedling major style1">
-              <span className="label">Lorem</span>
+              <span className="label">Ecologie</span>
             </span>
           </li>
           <li>
             <span className="icon solid fa-heart major style2">
-              <span className="label">Ipsum</span>
+              <span className="label">Humanisation</span>
             </span>
           </li>
           <li>
             <span className="icon solid fa-code major style3">
-              <span className="label">Dolor</span>
+              <span className="label">Expertise technique</span>
             </span>
           </li>
         </ul>
@@ -90,13 +91,13 @@ const IndexPage = ({ data }) => (
     <section id="two" className="wrapper special style2">
       <div className="inner">
         <header className="major">
-          <h2>Mes dernières publications</h2>
+          <h2>Dernières publications</h2>
         </header>
       </div>
       <PostList posts={data.allMdx.nodes}></PostList>
       <footer className="major">
         <Link to="/blog" className="button">
-          Tous mes articles
+          Tous les articles
         </Link>
       </footer>
     </section>
@@ -107,7 +108,7 @@ const IndexPage = ({ data }) => (
           <h2>Mes prestations</h2>
           <p>
             Votre projet est unique, il nécessite donc une écoute attentive avant de s'y lancer tête
-            baissée
+            baissée.
           </p>
         </header>
         <ul className="features">
@@ -132,7 +133,7 @@ const IndexPage = ({ data }) => (
             </p>
           </li>
           <li className="icon solid fa-graduation-cap">
-            <h3>Formation JavaScript</h3>
+            <h3>Formation JavaScript et ReactJS</h3>
             <p>Apprennez à concevoir des sites internet et applications web dynamiques</p>
           </li>
         </ul>
@@ -142,7 +143,7 @@ const IndexPage = ({ data }) => (
     <section id="cta" className="wrapper style4">
       <div className="inner">
         <header>
-          <h2>Discutons autour d'un café</h2>
+          <h2>Prenons un café</h2>
           <p>
             Si vous êtes à Nantes, je serai ravi de discuter de votre projet autour d'un café voire
             d'une bière suivant le moment de la journée.

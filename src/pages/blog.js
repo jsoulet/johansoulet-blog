@@ -32,7 +32,10 @@ const BlogPostList = ({ data }) => (
   <Layout fullMenu>
     <section className="wrapper style5">
       <div className="inner">
-        <Breadcrumb links={[{ label: 'Accueil', to: '/' }, { label: 'Blog' }]} />
+        <Breadcrumb
+          links={[{ label: 'Accueil', to: '/' }, { label: 'Blog' }]}
+          withDivider={false}
+        />
       </div>
       <PostList posts={data.allMdx.nodes}></PostList>
     </section>

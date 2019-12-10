@@ -1,15 +1,15 @@
 module.exports = {
-  siteTitle: 'Gatsby Starter Spectral', // <title>
-  manifestName: 'Spectral',
-  manifestShortName: 'Landing', // max 12 characters
+  siteTitle: 'Johan Soulet | Développeur sénior à Nantes', // <title>
+  manifestName: 'Johan Soulet',
+  manifestShortName: '@johansoulet', // max 12 characters
   manifestStartUrl: '/',
-  manifestBackgroundColor: '#663399',
-  manifestThemeColor: '#663399',
+  manifestBackgroundColor: '#242C33',
+  manifestThemeColor: '#242C33',
   manifestDisplay: 'standalone',
   manifestIcon: 'src/assets/img/favicon.png',
-  pathPrefix: `/gatsby-starter-spectral/`, // This path is subpath of your hosting https://domain/portfolio
-  heading: 'Anubhav Srivastava',
-  subHeading: 'Full time Web Developer. Part time Open source contributor  ',
+  pathPrefix: `/`, // This path is subpath of your hosting https://domain/portfolio
+  heading: 'Johan Soulet',
+  subHeading: 'Développeur JavaScript sénior à Nantes',
   // social
   socialLinks: [
     {

@@ -22,6 +22,13 @@ export default function Footer() {
           <Link to="/mentions-legales">Mentions légales</Link>
         </li>
       </ul>
+      <span className="copyright">
+        Made with{' '}
+        <span role="img" aria-label="love">
+          ❤️
+        </span>{' '}
+        in Nantes
+      </span>
     </footer>
   )
 }

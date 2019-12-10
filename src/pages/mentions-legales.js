@@ -11,7 +11,10 @@ const TermsPage = () => (
       </header>
       <section className="wrapper style5">
         <div className="inner">
-          <Breadcrumb links={[{ label: 'Accueil', to: '/' }, { label: 'Mentions légales' }]} />
+          <Breadcrumb
+            links={[{ label: 'Accueil', to: '/' }, { label: 'Mentions légales' }]}
+            withDivider={false}
+          />
           <p>
             Design original par{' '}
             <a target="_blank" rel="noopener noreferrer" href="http://html5up.net/">

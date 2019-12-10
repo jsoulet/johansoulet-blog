@@ -3,10 +3,11 @@ const config = require('./config')
 module.exports = {
   pathPrefix: config.pathPrefix,
   siteMetadata: {
-    title: 'Gatsby Html5up - Open-Source app with Spectral design',
-    description: `Open-Source Gatsby Starter`,
+    title: 'Johan Soulet - Développeur JavaScript sénior à Nantes',
+    description: `Artisan du code, je donne vie à des projets qui rendent le monde meilleur`,
+    keywords: `javascript reactjs nodejs développeur`,
     author: `@JohanSoulet`,
-    siteUrl: `https://gatsby-html5up-spectral.appseed.us`,
+    siteUrl: `https://johansoulet.fr`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',

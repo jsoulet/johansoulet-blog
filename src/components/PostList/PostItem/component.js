@@ -9,8 +9,12 @@ const PostListItem = ({ title, date, excerpt, image, path }) => {
         <Img fluid={image.childImageSharp.fluid} alt="" />
       </div>
       <div className="content">
-        <h3>{title}</h3>
-        <em>{date}</em>
+        <header>
+          <h3>{title}</h3>
+          <p>
+            <em>{date}</em>
+          </p>
+        </header>
         <p>{excerpt}</p>
       </div>
     </Link>

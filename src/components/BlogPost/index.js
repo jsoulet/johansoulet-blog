@@ -9,9 +9,10 @@ import { graphql } from 'gatsby'
 
 const shortcodes = { Image }
 
-const BlogBreadCrumb = ({ title }) => {
+const BlogBreadCrumb = ({ title, ...props }) => {
   return (
     <Breadcrumb
+      {...props}
       links={[{ label: 'Accueil', to: '/' }, { label: 'Blog', to: '/blog' }, { label: title }]}
     />
   )
@@ -30,12 +31,10 @@ const BlogPost = ({ data, children, pageContext, ...props }) => {
         <section className="wrapper style5">
           <div className="inner">
             <BlogBreadCrumb title={frontmatter.title} />
-            <hr />
             <MDXProvider components={shortcodes}>
               <MDXRenderer>{data.mdx.body}</MDXRenderer>
             </MDXProvider>
-            <hr />
-            <BlogBreadCrumb title={frontmatter.title} />
+            <BlogBreadCrumb title={frontmatter.title} isBottom />
           </div>
         </section>
       </article>
@@ -53,7 +52,7 @@ export const pageQuery = graphql`
       timeToRead
       frontmatter {
         title
-        date(formatString: "D MMMM YYYY")
+        date(formatString: "D MMMM YYYY", locale: "FR")
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 800) {
