@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import LocalizedLink from '../components/LocalizedLink'
 import { FormattedMessage } from 'react-intl'
 import config from '../../config'

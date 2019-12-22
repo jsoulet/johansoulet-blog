@@ -10,7 +10,7 @@ export default function SideBar({ fullMenu }) {
       <h1>
         <LocalizedLink to="/">Johan Soulet</LocalizedLink>
       </h1>
-      <span>{/* <LocaleSwitcher /> */}</span>
+      <LocaleSwitcher />
       <div className={`${headerOpen ? 'is-menu-visible' : ' '}`}>
         <Nav onMenuToggle={() => toggleHeader(!headerOpen)} />
       </div>

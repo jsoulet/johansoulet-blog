@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import LocalizedLink from '../LocalizedLink'
 import { FormattedMessage } from 'react-intl'
 

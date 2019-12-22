@@ -1496,14 +1496,14 @@
 		top: 0;
 		width: 100%;
 		z-index: _misc(z-index-base);
-
+		display: flex;
 		h1 {
 			@include vendor('transition', 'opacity #{_duration(transitions)} ease');
 			height: inherit;
-			left: 1.25em;
+			padding-left: 1.25em;
 			line-height: inherit;
-			position: absolute;
-			top: 0;
+			//position: absolute;
+			flex-grow: 1;
 
 			a {
 				border: 0;
@@ -1516,11 +1516,15 @@
 				}
 			}
 		}
-
+		.localeSwitcher {
+			> * {
+				margin-left: 1rem;
+			}
+		}
 		nav {
 			height: inherit;
 			line-height: inherit;
-			position: absolute;
+			//position: absolute;
 			right: 0;
 			top: 0;
 
