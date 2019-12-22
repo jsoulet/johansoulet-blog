@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl'
 const ContactForm = () => {
   const { formatMessage } = useIntl()
   return (
-    <form method="post" action="#">
+    <form method="post" action="#" netlify>
       <div className="row gtr-uniform">
         <div className="col-6 col-12-xsmall">
           <input
