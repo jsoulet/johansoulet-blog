@@ -14,10 +14,12 @@ export const pageQuery = graphql`
       nodes {
         id
         excerpt(pruneLength: 100)
+        fields {
+          slug
+        }
         frontmatter {
-          date(fromNow: true, locale: "FR")
+          date(formatString: "DD-MM-YYYY")
           title
-          path
           featuredImage {
             childImageSharp {
               fluid(maxHeight: 500, maxWidth: 883, fit: COVER, quality: 50) {

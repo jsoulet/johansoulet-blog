@@ -13,7 +13,11 @@ const BlogBreadCrumb = ({ title, ...props }) => {
   return (
     <Breadcrumb
       {...props}
-      links={[{ label: 'Accueil', to: '/' }, { label: 'Blog', to: '/blog' }, { label: title }]}
+      links={[
+        { label: 'breadcrumb.home', to: '/' },
+        { label: 'breadcrumb.blog', to: '/blog' },
+        { label: title, isNotTranslated: true },
+      ]}
     />
   )
 }
@@ -21,7 +25,7 @@ const BlogBreadCrumb = ({ title, ...props }) => {
 const BlogPost = ({ data, children, pageContext, ...props }) => {
   const { frontmatter } = data.mdx
   return (
-    <Layout fullMenu>
+    <Layout fullMenu locale={frontmatter.lang}>
       <article id="main">
         <Header
           title={frontmatter.title}
@@ -52,7 +56,8 @@ export const pageQuery = graphql`
       timeToRead
       frontmatter {
         title
-        date(formatString: "D MMMM YYYY", locale: "FR")
+        lang
+        date(formatString: "DD/MM/YYYY")
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 800) {

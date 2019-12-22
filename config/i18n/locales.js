@@ -1,4 +1,4 @@
 module.exports = {
-  fr: { path: 'fr', locale: 'Français', default: true, dateFormat: 'DD/MM/YYYY' },
-  en: { path: 'en', locale: 'English', default: false, dateFormat: 'DD/MM/YYYY' },
+  fr: { path: '/', name: 'Français', default: true, dateFormat: 'DD/MM/YYYY' },
+  en: { path: '/en', name: 'English', default: false, dateFormat: 'DD/MM/YYYY' },
 }

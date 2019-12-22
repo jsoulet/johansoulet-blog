@@ -2,14 +2,14 @@ import React from 'react'
 import PostListItem from './component'
 
 const PostListItemContainer = ({ post }) => {
-  const { excerpt, frontmatter } = post
-  const { date, title, path, featuredImage, chapo } = frontmatter
+  const { excerpt, frontmatter, fields } = post
+  const { date, title, featuredImage, chapo } = frontmatter
   return (
     <PostListItem
       title={title}
       date={date}
       excerpt={chapo || excerpt || ''}
-      path={path}
+      path={fields.slug}
       image={featuredImage}
     />
   )

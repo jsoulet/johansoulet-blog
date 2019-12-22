@@ -9,7 +9,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // remote CMS you could also check to see if the parent node was a
   // `File` node here
   if (node.internal.type === 'Mdx') {
-    const value = createFilePath({ node, getNode })
+    const path = createFilePath({ node, getNode })
+    const localizedSlug = createLocalisedPath(path, locales[node.frontmatter.lang])
     createNodeField({
       // Name of the field you are adding
       name: 'slug',
@@ -18,7 +19,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       // Generated value based on filepath with "blog" prefix. you
       // don't need a separating "/" before the value because
       // createFilePath returns a path with the leading "/".
-      value: `/blog${value}`,
+      value: localizedSlug,
     })
   }
 }
@@ -75,11 +76,12 @@ exports.createPages = async ({ graphql, actions, reporter, page }) => {
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
     const lang = node.frontmatter.lang
-    const localizedPath = createLocalisedPath(node.fields.slug, locales[lang])
+    // let localizedPath = createLocalisedPath(node.fields.slug, locales[lang])
+
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
-      path: localizedPath,
+      path: node.fields.slug,
       // This component will wrap our MDX content
       component: path.resolve(`./src/components/BlogPost/index.js`),
       // You can use the values in this context in

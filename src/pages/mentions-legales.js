@@ -1,18 +1,21 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { FormattedMessage } from 'react-intl'
+import LocalizedLink from '../components/LocalizedLink'
 import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
 
-const TermsPage = () => (
-  <Layout fullMenu>
+const TermsPage = ({ pageContext }) => (
+  <Layout fullMenu locale={pageContext.locale}>
     <article id="main">
       <header>
-        <h1>Mentions légales</h1>
+        <h1>
+          <FormattedMessage id="terms.title" />
+        </h1>
       </header>
       <section className="wrapper style5">
         <div className="inner">
           <Breadcrumb
-            links={[{ label: 'Accueil', to: '/' }, { label: 'Mentions légales' }]}
+            links={[{ label: 'breadcrumb.home', to: '/' }, { label: 'breadcrumb.terms' }]}
             withDivider={false}
           />
           <p>
@@ -32,9 +35,9 @@ const TermsPage = () => (
             </a>
           </p>
           <p className="align-center">
-            <Link to="/" className="button primary">
-              Retour à l'accueil
-            </Link>
+            <LocalizedLink to="/" className="button primary">
+              <FormattedMessage id="terms.goBackHome.label" />
+            </LocalizedLink>
           </p>
         </div>
       </section>

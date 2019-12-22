@@ -56,7 +56,7 @@ class Layout extends Component {
           }
         `}
         render={data => (
-          <IntlProvider locale={locale} messages={messages[locale]}>
+          <IntlProvider locale={locale} defaultLocale={defaultLocale} messages={messages[locale]}>
             <Helmet defaultTitle={data.site.siteMetadata.title}>
               <html lang="en" />
               <title>{data.site.siteMetadata.title}</title>

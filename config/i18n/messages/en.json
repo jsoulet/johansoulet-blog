@@ -34,5 +34,10 @@
     "footer.copyright": "Johan Soulet",
     "nav.menu": "Menu",
     "nav.home": "Home",
-    "nav.blog": "Blog"
+    "nav.blog": "Blog",
+    "breadcrumb.blog": "Blog",
+    "breadcrumb.home": "Home",
+    "breadcrumb.terms": "Terms and conditions",
+    "terms.title": "Terms and conditions",
+    "terms.goBackHome.label": "Go back home"
 }

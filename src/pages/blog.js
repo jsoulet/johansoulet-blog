@@ -10,10 +10,12 @@ export const pageQuery = graphql`
       nodes {
         id
         excerpt(pruneLength: 250)
+        fields {
+          slug
+        }
         frontmatter {
-          date(fromNow: true, locale: "FR")
+          date(formatString: "DD-MM-YYYY")
           title
-          path
           featuredImage {
             childImageSharp {
               fluid(maxHeight: 500, maxWidth: 883, fit: COVER, quality: 50) {
@@ -28,12 +30,12 @@ export const pageQuery = graphql`
   }
 `
 
-const BlogPostList = ({ data }) => (
-  <Layout fullMenu>
+const BlogPostList = ({ data, pageContext }) => (
+  <Layout fullMenu locale={pageContext.locale}>
     <section className="wrapper style5">
       <div className="inner">
         <Breadcrumb
-          links={[{ label: 'Accueil', to: '/' }, { label: 'Blog' }]}
+          links={[{ label: 'breadcrumb.home', to: '/' }, { label: 'breadcrumb.blog' }]}
           withDivider={false}
         />
       </div>

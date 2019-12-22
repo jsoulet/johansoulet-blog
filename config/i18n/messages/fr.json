@@ -34,5 +34,10 @@
     "footer.copyright": "Johan Soulet",
     "nav.menu": "Menu",
     "nav.home": "Accueil",
-    "nav.blog": "Blog"
+    "nav.blog": "Blog",
+    "breadcrumb.blog": "Blog",
+    "breadcrumb.home": "Accueil",
+    "breadcrumb.terms": "Mentions légales",
+    "terms.title": "Mentions légales",
+    "terms.goBackHome.label": "Retour à l'accueil"
 }
