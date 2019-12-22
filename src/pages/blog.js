@@ -5,8 +5,11 @@ import Breadcrumb from '../components/Breadcrumb'
 import PostList from '../components/PostList'
 
 export const pageQuery = graphql`
-  {
-    allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+  query BlogPage($locale: String) {
+    allMdx(
+      filter: { frontmatter: { lang: { eq: $locale } } }
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
       nodes {
         id
         excerpt(pruneLength: 250)
@@ -14,7 +17,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "DD-MM-YYYY")
+          date(formatString: "D MMMM YYYY", locale: $locale)
           title
           featuredImage {
             childImageSharp {
@@ -30,18 +33,20 @@ export const pageQuery = graphql`
   }
 `
 
-const BlogPostList = ({ data, pageContext }) => (
-  <Layout fullMenu locale={pageContext.locale}>
-    <section className="wrapper style5">
-      <div className="inner">
-        <Breadcrumb
-          links={[{ label: 'breadcrumb.home', to: '/' }, { label: 'breadcrumb.blog' }]}
-          withDivider={false}
-        />
-      </div>
-      <PostList posts={data.allMdx.nodes}></PostList>
-    </section>
-  </Layout>
-)
+const BlogPostList = ({ data, pageContext }) => {
+  return (
+    <Layout fullMenu locale={pageContext.locale}>
+      <section className="wrapper style5">
+        <div className="inner">
+          <Breadcrumb
+            links={[{ label: 'breadcrumb.home', to: '/' }, { label: 'breadcrumb.blog' }]}
+            withDivider={false}
+          />
+        </div>
+        <PostList posts={data.allMdx.nodes}></PostList>
+      </section>
+    </Layout>
+  )
+}
 
 export default BlogPostList

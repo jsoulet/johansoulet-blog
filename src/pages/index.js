@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-
 import Layout from '../components/Layout'
 import Contact from '../components/Index/Contact'
 import Services from '../components/Index/Services'
@@ -9,8 +8,12 @@ import Values from '../components/Index/Values'
 import Banner from '../components/Index/Banner'
 
 export const pageQuery = graphql`
-  {
-    allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 3) {
+  query IndexPage($locale: String) {
+    allMdx(
+      filter: { frontmatter: { lang: { eq: $locale } } }
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 3
+    ) {
       nodes {
         id
         excerpt(pruneLength: 100)
@@ -18,7 +21,7 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "DD-MM-YYYY")
+          date(formatString: "D MMMM YYYY", locale: $locale)
           title
           featuredImage {
             childImageSharp {

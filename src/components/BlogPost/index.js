@@ -25,11 +25,11 @@ const BlogBreadCrumb = ({ title, ...props }) => {
 const BlogPost = ({ data, children, pageContext, ...props }) => {
   const { frontmatter } = data.mdx
   return (
-    <Layout fullMenu locale={frontmatter.lang}>
+    <Layout fullMenu locale={pageContext.locale}>
       <article id="main">
         <Header
           title={frontmatter.title}
-          subtitle={`${frontmatter.date} - ${data.mdx.timeToRead}mn to read`}
+          subtitle={frontmatter.date}
           banner={frontmatter.featuredImage}
         />
         <section className="wrapper style5">
@@ -49,15 +49,14 @@ const BlogPost = ({ data, children, pageContext, ...props }) => {
 export default BlogPost
 
 export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
+  query BlogPostQuery($id: String, $locale: String) {
     mdx(id: { eq: $id }) {
       id
       body
-      timeToRead
       frontmatter {
         title
         lang
-        date(formatString: "DD/MM/YYYY")
+        date(formatString: "DD MMMM YYYY", locale: $locale)
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 800) {

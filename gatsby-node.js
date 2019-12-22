@@ -75,9 +75,6 @@ exports.createPages = async ({ graphql, actions, reporter, page }) => {
   const posts = result.data.allMdx.edges
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
-    const lang = node.frontmatter.lang
-    // let localizedPath = createLocalisedPath(node.fields.slug, locales[lang])
-
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
@@ -88,7 +85,7 @@ exports.createPages = async ({ graphql, actions, reporter, page }) => {
       // our page layout component
       context: {
         id: node.id,
-        lang: node.frontmatter.lang,
+        locale: node.frontmatter.lang,
       },
     })
   })
