@@ -4,13 +4,14 @@ import { useIntl } from 'react-intl'
 const ContactForm = () => {
   const { formatMessage } = useIntl()
   return (
-    <form method="post" action="#" data-netlify="true">
+    <form action="#" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="Contact Form" />
       <div className="row gtr-uniform">
         <div className="col-6 col-12-xsmall">
           <input
             type="text"
-            name="nom"
-            id="nom"
+            name="lastname"
+            id="lastname"
             defaultValue=""
             placeholder={formatMessage({ id: 'index.contact.form.lastname.placeholder' })}
           />
@@ -18,8 +19,8 @@ const ContactForm = () => {
         <div className="col-6 col-12-xsmall">
           <input
             type="text"
-            name="prénom"
-            id="prénom"
+            name="firstname"
+            id="firstname"
             defaultValue=""
             placeholder={formatMessage({ id: 'index.contact.form.firstname.placeholder' })}
           />
