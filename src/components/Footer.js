@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { FormattedMessage } from 'react-intl'
 import config from '../../config'
 export default function Footer() {
   return (
@@ -17,9 +18,13 @@ export default function Footer() {
         })}
       </ul>
       <ul className="copyright">
-        <li>&copy; Johan Soulet</li>
         <li>
-          <Link to="/mentions-legales">Mentions légales</Link>
+          &copy; <FormattedMessage id="footer.copyright" />
+        </li>
+        <li>
+          <Link to="/mentions-legales">
+            <FormattedMessage id="footer.terms.link" />
+          </Link>
         </li>
       </ul>
       <span className="copyright">

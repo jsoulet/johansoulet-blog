@@ -37,6 +37,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-images": "^0.5.19",
+    "react-intl": "^3.9.2",
     "react-scrollspy": "^3.4.0",
     "remark-autolink-headings": "^5.2.1",
     "smoothscroll-polyfill": "^0.4.4"

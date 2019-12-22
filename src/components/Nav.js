@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { FormattedMessage } from 'react-intl'
 
 export default function Nav({ onMenuToggle = () => {} }) {
   return (
@@ -14,15 +15,21 @@ export default function Nav({ onMenuToggle = () => {} }) {
             }}
             className="menuToggle"
           >
-            <span>Menu</span>
+            <span>
+              <FormattedMessage id="nav.menu" />
+            </span>
           </a>
           <div id="menu">
             <ul>
               <li>
-                <Link to="/">Accueil</Link>
+                <Link to="/">
+                  <FormattedMessage id="nav.home" />
+                </Link>
               </li>
               <li>
-                <Link to="/blog">Blog</Link>
+                <Link to="/blog">
+                  <FormattedMessage id="nav.blog" />
+                </Link>
               </li>
             </ul>
             <a

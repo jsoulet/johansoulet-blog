@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { IntlProvider } from 'react-intl'
 import { StaticQuery, graphql } from 'gatsby'
 import cn from 'classnames'
 
 import '../assets/sass/main.scss'
 import Footer from './Footer'
 import SideBar from './Sidebar'
+
+import locales from '../../config/i18n/locales'
+
+const defaultLocale = Object.keys(locales).filter(lang => locales[lang].default)[0]
+let messages = {}
+Object.keys(locales).forEach(async lang => {
+  const langMessages = await import(`../../config/i18n/messages/${lang}.json`)
+  messages = {
+    ...messages,
+    [lang]: langMessages,
+  }
+})
 
 class Layout extends Component {
   constructor(props) {
@@ -29,7 +42,7 @@ class Layout extends Component {
   }
 
   render() {
-    const { children, fullMenu, isLanding } = this.props
+    const { children, fullMenu, isLanding, locale = defaultLocale } = this.props
     const { isPreloaded } = this.state
     return (
       <StaticQuery
@@ -43,7 +56,7 @@ class Layout extends Component {
           }
         `}
         render={data => (
-          <>
+          <IntlProvider locale={locale} messages={messages[locale]}>
             <Helmet defaultTitle={data.site.siteMetadata.title}>
               <html lang="en" />
               <title>{data.site.siteMetadata.title}</title>
@@ -59,7 +72,7 @@ class Layout extends Component {
                 <Footer />
               </div>
             </div>
-          </>
+          </IntlProvider>
         )}
       />
     )

@@ -1,4 +1,7 @@
+const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
+const locales = require('./config/i18n/locales')
+const createLocalisedPath = require('./utils/createLocalisedPath')
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -20,10 +23,33 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-const path = require('path')
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+
+  return new Promise(resolve => {
+    deletePage(page)
+
+    Object.keys(locales).forEach(lang => {
+      const localizedPath = createLocalisedPath(page.path, locales[lang])
+
+      return createPage({
+        ...page,
+        path: localizedPath,
+        context: {
+          locale: lang,
+        },
+      })
+    })
+
+    resolve()
+  })
+}
+
+exports.createPages = async ({ graphql, actions, reporter, page }) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions
+
+  // Create blog post pages from MDX
   const result = await graphql(`
     query {
       allMdx {
@@ -32,6 +58,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
+            }
+            frontmatter {
+              lang
             }
           }
         }
@@ -45,15 +74,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = result.data.allMdx.edges
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
+    const lang = node.frontmatter.lang
+    const localizedPath = createLocalisedPath(node.fields.slug, locales[lang])
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
-      path: node.fields.slug,
+      path: localizedPath,
       // This component will wrap our MDX content
       component: path.resolve(`./src/components/BlogPost/index.js`),
       // You can use the values in this context in
       // our page layout component
-      context: { id: node.id },
+      context: {
+        id: node.id,
+        lang: node.frontmatter.lang,
+      },
     })
   })
 }
