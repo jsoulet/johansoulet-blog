@@ -29,11 +29,7 @@ export default function Footer() {
         </li>
       </ul>
       <span className="copyright">
-        Made with{' '}
-        <span role="img" aria-label="love">
-          ❤️
-        </span>{' '}
-        in Nantes
+        <FormattedMessage id="footer.madeWithLove" />
       </span>
     </footer>
   )

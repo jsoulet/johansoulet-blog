@@ -32,6 +32,7 @@
     "index.contact.form.button.label": "Send",
     "footer.terms.link": "Terms and conditions",
     "footer.copyright": "Johan Soulet",
+    "footer.madeWithLove": "Made with ❤️ in Nantes",
     "nav.menu": "Menu",
     "nav.home": "Home",
     "nav.blog": "Blog",
@@ -39,5 +40,8 @@
     "breadcrumb.home": "Home",
     "breadcrumb.terms": "Terms and conditions",
     "terms.title": "Terms and conditions",
-    "terms.goBackHome.label": "Go back home"
+    "terms.goBackHome.label": "Go back home",
+    "404.title": "Page not found",
+    "404.goBackHome": "Go back home",
+    "404.notFound": "Oops! The page you are looking for has been removed or relocated."
 }

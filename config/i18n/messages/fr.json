@@ -32,6 +32,7 @@
     "index.contact.form.button.label": "Envoyer",
     "footer.terms.link": "Mentions légales",
     "footer.copyright": "Johan Soulet",
+    "footer.madeWithLove": "Fait avec ❤️ à Nantes",
     "nav.menu": "Menu",
     "nav.home": "Accueil",
     "nav.blog": "Blog",
@@ -39,5 +40,8 @@
     "breadcrumb.home": "Accueil",
     "breadcrumb.terms": "Mentions légales",
     "terms.title": "Mentions légales",
-    "terms.goBackHome.label": "Retour à l'accueil"
+    "terms.goBackHome.label": "Retour à l'accueil",
+    "404.title": "Page inaccessible",
+    "404.goBackHome": "Retour à l'accueil",
+    "404.notFound": "Oups! La page que vous recherchez a été supprimée ou déplacée."
 }

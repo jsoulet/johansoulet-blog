@@ -1,25 +1,32 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Layout from '../components/Layout'
+import LocalizedLink from '../components/LocalizedLink'
+import { FormattedMessage } from 'react-intl'
 
-const IndexPage = () => (
-  <Layout fullMenu>
-    <article id="main">
-      <header>
-        <h2>Erreur 404</h2>
-        <p>La page que vous demandez n'existe pas</p>
-      </header>
-      <div className="wrapper">
-        <div className="inner">
-          <p className="align-center">
-            <Link to="/" className="button">
-              Retour à l'accueil
-            </Link>
+const PageNotFound = ({ pageContext }) => {
+  return (
+    <Layout fullMenu locale={pageContext.locale}>
+      <article id="main">
+        <header>
+          <h2>
+            <FormattedMessage id="404.title" />
+          </h2>
+          <p>
+            <FormattedMessage id="404.notFound" />
           </p>
+        </header>
+        <div className="wrapper">
+          <div className="inner">
+            <p className="align-center">
+              <LocalizedLink to="/" className="button">
+                <FormattedMessage id="404.goBackHome" />
+              </LocalizedLink>
+            </p>
+          </div>
         </div>
-      </div>
-    </article>
-  </Layout>
-)
+      </article>
+    </Layout>
+  )
+}
 
-export default IndexPage
+export default PageNotFound
