@@ -8,18 +8,6 @@ import '../assets/sass/main.scss'
 import Footer from './Footer'
 import SideBar from './Sidebar'
 
-import locales from '../../config/i18n/locales'
-
-const defaultLocale = Object.keys(locales).filter(lang => locales[lang].default)[0]
-let messages = {}
-Object.keys(locales).forEach(async lang => {
-  const langMessages = await import(`../../config/i18n/messages/${lang}.json`)
-  messages = {
-    ...messages,
-    [lang]: langMessages,
-  }
-})
-
 class Layout extends Component {
   constructor(props) {
     super(props)

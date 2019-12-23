@@ -1,10 +1,19 @@
 import React, { useCallback, useState } from 'react'
 import { useIntl } from 'gatsby-plugin-intl'
 
+import SendButtom from './SendButton'
+
 const encode = data => {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&')
+}
+
+const DEFAULT_FORM_VALUES = {
+  firstname: '',
+  lastname: '',
+  email: '',
+  message: '',
 }
 
 const ContactForm = () => {
@@ -15,12 +24,7 @@ const ContactForm = () => {
     isSent: false,
   })
 
-  const [formData, setFormData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    message: '',
-  })
+  const [formData, setFormData] = useState(DEFAULT_FORM_VALUES)
 
   const handleOnSubmit = useCallback(
     event => {
@@ -34,13 +38,16 @@ const ContactForm = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({ 'form-name': 'contact', name: 'contact', ...formData }),
-      }).then(() => {
-        setFormStatus({
-          ...formStatus,
-          isSent: true,
-          isSending: false,
-          hasError: false,
-        }).catch(() => {
+      })
+        .then(() => {
+          setFormStatus({
+            isSent: true,
+            isSending: false,
+            hasError: false,
+          })
+          setFormData(DEFAULT_FORM_VALUES)
+        })
+        .catch(() => {
           setFormStatus({
             ...formStatus,
             isSent: false,
@@ -48,9 +55,8 @@ const ContactForm = () => {
             hasError: true,
           })
         })
-      })
     },
-    [formData, formStatus]
+    [formData, formStatus, setFormStatus]
   )
 
   const handleOnChange = useCallback(
@@ -77,7 +83,7 @@ const ContactForm = () => {
             type="text"
             name="lastname"
             id="lastname"
-            defaultValue=""
+            value={formData.lastname}
             placeholder={formatMessage({ id: 'index.contact.form.lastname.placeholder' })}
             onChange={handleOnChange}
           />
@@ -87,7 +93,7 @@ const ContactForm = () => {
             type="text"
             name="firstname"
             id="firstname"
-            defaultValue=""
+            value={formData.firstname}
             placeholder={formatMessage({ id: 'index.contact.form.firstname.placeholder' })}
             onChange={handleOnChange}
           />
@@ -97,6 +103,7 @@ const ContactForm = () => {
             type="email"
             name="email"
             id="email"
+            value={formData.email}
             required
             placeholder={formatMessage({ id: 'index.contact.form.email.placeholder' })}
             onChange={handleOnChange}
@@ -106,19 +113,21 @@ const ContactForm = () => {
           <textarea
             name="message"
             id="message"
+            value={formData.message}
             placeholder={formatMessage({ id: 'index.contact.form.message.placeholder' })}
             rows="6"
             onChange={handleOnChange}
+            required
           ></textarea>
         </div>
         <div className="col-12">
           <ul className="actions">
             <li>
-              <input
-                type="submit"
-                value={formatMessage({ id: 'index.contact.form.button.label' })}
-                className="primary"
-              />
+              <SendButtom
+                isSent={formStatus.isSent}
+                isSending={formStatus.isSending}
+                hasError={formStatus.hasError}
+              ></SendButtom>
             </li>
           </ul>
         </div>
