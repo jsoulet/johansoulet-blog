@@ -25,7 +25,7 @@ const BlogBreadCrumb = ({ title, ...props }) => {
 const BlogPost = ({ data, children, pageContext, ...props }) => {
   const { frontmatter } = data.mdx
   return (
-    <Layout fullMenu locale={pageContext.locale}>
+    <Layout fullMenu hideLocaleSwitcher>
       <article id="main">
         <Header
           title={frontmatter.title}

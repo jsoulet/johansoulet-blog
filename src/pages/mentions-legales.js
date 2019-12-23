@@ -1,11 +1,10 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import LocalizedLink from '../components/LocalizedLink'
+import { FormattedMessage, Link } from 'gatsby-plugin-intl'
 import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
 
-const TermsPage = ({ pageContext }) => (
-  <Layout fullMenu locale={pageContext.locale}>
+const TermsPage = () => (
+  <Layout fullMenu>
     <article id="main">
       <header>
         <h1>
@@ -35,9 +34,9 @@ const TermsPage = ({ pageContext }) => (
             </a>
           </p>
           <p className="align-center">
-            <LocalizedLink to="/" className="button primary">
+            <Link to="/" className="button primary">
               <FormattedMessage id="terms.goBackHome.label" />
-            </LocalizedLink>
+            </Link>
           </p>
         </div>
       </section>

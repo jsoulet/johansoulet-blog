@@ -55,6 +55,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/config/i18n/messages`,
+        // supported language
+        languages: [`en`, `fr`],
+        // language file path
+        defaultLanguage: `fr`,
+        // option to redirect to `/ko` when connecting `/`
+        redirect: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: config.manifestName,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link } from 'gatsby-plugin-intl'
 import Img from 'gatsby-image'
 
 const PostListItem = ({ title, date, excerpt, image, path }) => {

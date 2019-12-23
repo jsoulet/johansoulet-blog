@@ -33,9 +33,9 @@ export const pageQuery = graphql`
   }
 `
 
-const BlogPostList = ({ data, pageContext }) => {
+const BlogPostList = ({ data }) => {
   return (
-    <Layout fullMenu locale={pageContext.locale}>
+    <Layout fullMenu>
       <section className="wrapper style5">
         <div className="inner">
           <Breadcrumb

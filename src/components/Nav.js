@@ -1,6 +1,5 @@
 import React from 'react'
-import LocalizedLink from './LocalizedLink'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, Link } from 'gatsby-plugin-intl'
 
 export default function Nav({ onMenuToggle = () => {} }) {
   return (
@@ -22,14 +21,14 @@ export default function Nav({ onMenuToggle = () => {} }) {
           <div id="menu">
             <ul>
               <li>
-                <LocalizedLink to="/">
+                <Link to="/">
                   <FormattedMessage id="nav.home" />
-                </LocalizedLink>
+                </Link>
               </li>
               <li>
-                <LocalizedLink to="/blog">
+                <Link to="/blog">
                   <FormattedMessage id="nav.blog" />
-                </LocalizedLink>
+                </Link>
               </li>
             </ul>
             <a

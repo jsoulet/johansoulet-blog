@@ -37,9 +37,9 @@ export const pageQuery = graphql`
   }
 `
 
-const IndexPage = ({ data, pageContext }) => {
+const IndexPage = ({ data }) => {
   return (
-    <Layout isLanding locale={pageContext.locale}>
+    <Layout isLanding>
       <Banner />
       <Values />
       <Posts posts={data.allMdx.nodes} />

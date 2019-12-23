@@ -324,9 +324,6 @@
 			top: -0.25em;
 		}
 
-		h2 + p {
-		}
-
 		h3 + p {
 			font-size: 1.1em;
 		}
@@ -1164,10 +1161,6 @@
 				border-color: _palette($p, border);
 			}
 
-			code {
-				// background: _palette($p, border-bg);
-			}
-
 		// Section/Article
 
 			header {
@@ -1461,7 +1454,6 @@
 			position: absolute;
 			right: 0;
 			top: 0;
-			vertical-align: middle;
 			width: 7em;
 		}
 

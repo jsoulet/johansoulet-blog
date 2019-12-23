@@ -1,11 +1,10 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import LocalizedLink from '../components/LocalizedLink'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, Link } from 'gatsby-plugin-intl'
 
-const PageNotFound = ({ pageContext }) => {
+const PageNotFound = () => {
   return (
-    <Layout fullMenu locale={pageContext.locale}>
+    <Layout fullMenu>
       <article id="main">
         <header>
           <h2>
@@ -18,9 +17,9 @@ const PageNotFound = ({ pageContext }) => {
         <div className="wrapper">
           <div className="inner">
             <p className="align-center">
-              <LocalizedLink to="/" className="button">
+              <Link to="/" className="button">
                 <FormattedMessage id="404.goBackHome" />
-              </LocalizedLink>
+              </Link>
             </p>
           </div>
         </div>

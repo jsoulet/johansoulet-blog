@@ -1,7 +1,6 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, Link } from 'gatsby-plugin-intl'
 import PostList from '../../PostList'
-import LocalizedLink from '../../LocalizedLink'
 
 const Posts = ({ posts }) => {
   return (
@@ -15,9 +14,9 @@ const Posts = ({ posts }) => {
       </div>
       <PostList posts={posts}></PostList>
       <footer className="major">
-        <LocalizedLink to="/blog" className="button">
+        <Link to="/blog" className="button">
           <FormattedMessage id="index.posts.seeAllButtonLabel" />
-        </LocalizedLink>
+        </Link>
       </footer>
     </section>
   )

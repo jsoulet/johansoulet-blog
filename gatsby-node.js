@@ -1,7 +1,5 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
-const locales = require('./config/i18n/locales')
-const createLocalisedPath = require('./utils/createLocalisedPath')
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -10,7 +8,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // `File` node here
   if (node.internal.type === 'Mdx') {
     const path = createFilePath({ node, getNode })
-    const localizedSlug = createLocalisedPath(path, locales[node.frontmatter.lang])
+    // const localizedSlug = createLocalisedPath(path, locales[node.frontmatter.lang])
     createNodeField({
       // Name of the field you are adding
       name: 'slug',
@@ -19,7 +17,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       // Generated value based on filepath with "blog" prefix. you
       // don't need a separating "/" before the value because
       // createFilePath returns a path with the leading "/".
-      value: localizedSlug,
+      value: path,
     })
   }
 }
@@ -29,19 +27,16 @@ exports.onCreatePage = ({ page, actions }) => {
 
   return new Promise(resolve => {
     deletePage(page)
-
-    Object.keys(locales).forEach(lang => {
-      const localizedPath = createLocalisedPath(page.path, locales[lang])
-
-      return createPage({
+    if (page.context.type !== 'blog' || page.context.locale === page.context.intl.language) {
+      createPage({
         ...page,
-        path: localizedPath,
+        // path: localizedPath,
         context: {
-          locale: lang,
+          ...page.context,
+          locale: page.context.intl.language,
         },
       })
-    })
-
+    }
     resolve()
   })
 }
@@ -86,6 +81,7 @@ exports.createPages = async ({ graphql, actions, reporter, page }) => {
       context: {
         id: node.id,
         locale: node.frontmatter.lang,
+        type: 'blog',
       },
     })
   })

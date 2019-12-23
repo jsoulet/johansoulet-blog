@@ -1,6 +1,5 @@
 import React from 'react'
-import LocalizedLink from '../components/LocalizedLink'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, Link } from 'gatsby-plugin-intl'
 import config from '../../config'
 export default function Footer() {
   return (
@@ -22,9 +21,9 @@ export default function Footer() {
           &copy; <FormattedMessage id="footer.copyright" />
         </li>
         <li>
-          <LocalizedLink to="/mentions-legales">
+          <Link to="/mentions-legales">
             <FormattedMessage id="footer.terms.link" />
-          </LocalizedLink>
+          </Link>
         </li>
       </ul>
       <span className="copyright">

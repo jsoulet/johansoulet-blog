@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { useIntl } from 'react-intl'
+import { useIntl } from 'gatsby-plugin-intl'
 
 const encode = data => {
   return Object.keys(data)

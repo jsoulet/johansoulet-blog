@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { IntlProvider } from 'react-intl'
 import { StaticQuery, graphql } from 'gatsby'
 import cn from 'classnames'
 
@@ -42,7 +41,7 @@ class Layout extends Component {
   }
 
   render() {
-    const { children, fullMenu, isLanding, locale = defaultLocale } = this.props
+    const { children, fullMenu, isLanding, hideLocaleSwitcher = false } = this.props
     const { isPreloaded } = this.state
     return (
       <StaticQuery
@@ -56,7 +55,7 @@ class Layout extends Component {
           }
         `}
         render={data => (
-          <IntlProvider locale={locale} defaultLocale={defaultLocale} messages={messages[locale]}>
+          <>
             <Helmet defaultTitle={data.site.siteMetadata.title}>
               <html lang="en" />
               <title>{data.site.siteMetadata.title}</title>
@@ -67,12 +66,12 @@ class Layout extends Component {
               className={cn({ 'main-body': true, landing: isLanding, 'is-preload': isPreloaded })}
             >
               <div id="page-wrapper">
-                <SideBar fullMenu={fullMenu} />
+                <SideBar fullMenu={fullMenu} hideLocaleSwitcher={hideLocaleSwitcher} />
                 {children}
                 <Footer />
               </div>
             </div>
-          </IntlProvider>
+          </>
         )}
       />
     )

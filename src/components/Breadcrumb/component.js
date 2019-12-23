@@ -1,6 +1,5 @@
 import React from 'react'
-import LocalizedLink from '../LocalizedLink'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, Link } from 'gatsby-plugin-intl'
 
 const Breadcrumb = ({ links, isBottom = false, withDivider = true }) => {
   return (
@@ -17,9 +16,9 @@ const Breadcrumb = ({ links, isBottom = false, withDivider = true }) => {
           }
           return (
             <span key={index}>
-              <LocalizedLink to={link.to}>
+              <Link to={link.to}>
                 {link.isNotTranslated ? link.label : <FormattedMessage id={link.label} />}
-              </LocalizedLink>
+              </Link>
               {' / '}
             </span>
           )
