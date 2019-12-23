@@ -3,6 +3,8 @@ import { useIntl } from 'gatsby-plugin-intl'
 
 import SendButtom from './SendButton'
 
+const FORM_NAME = 'contact-form'
+
 const encode = data => {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
@@ -37,7 +39,7 @@ const ContactForm = () => {
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact', name: 'contact', ...formData }),
+        body: encode({ 'form-name': FORM_NAME, name: FORM_NAME, ...formData }),
       })
         .then(() => {
           setFormStatus({
@@ -72,11 +74,12 @@ const ContactForm = () => {
     <form
       action="#"
       method="POST"
-      data-netlify="true"
       onSubmit={handleOnSubmit}
-      name="contact-form"
+      name={FORM_NAME}
+      data-netlify="true"
+      netlify-honeypot="bot-field"
     >
-      <input type="hidden" name="form-name" value="contact-form" />
+      <input type="hidden" name="form-name" value={FORM_NAME} />
       <div className="row gtr-uniform">
         <div className="col-6 col-12-xsmall">
           <input
@@ -120,7 +123,7 @@ const ContactForm = () => {
             required
           ></textarea>
         </div>
-        <div className="col-12">
+        <div className="col-24">
           <ul className="actions">
             <li>
               <SendButtom

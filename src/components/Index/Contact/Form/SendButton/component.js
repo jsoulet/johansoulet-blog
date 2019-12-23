@@ -5,7 +5,11 @@ const SendButton = ({ disabled, label, hasError }) => {
   return (
     <>
       <input type="submit" value={label} className="primary" disabled={disabled} />
-      {hasError && <span>Oops, something wrong happend</span>}
+      {hasError && (
+        <p>
+          <FormattedMessage id="index.contact.form.errorMessage.label" />
+        </p>
+      )}
     </>
   )
 }
