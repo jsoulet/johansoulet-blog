@@ -47,7 +47,6 @@ const Layout = ({ children, fullMenu, isLanding, hideLocaleSwitcher = false }) =
             <meta name="keywords" content={metadata.keywords} />
             <meta property="og:title" content={metadata.defaultTitle}></meta>
             <meta property="og:description" content={metadata.description}></meta>
-            <meta property="og:url" content={window ? window.location.href : ''}></meta>
             <meta name="twitter:card" content="summary_large_image"></meta>
             <meta property="og:image" content={metaBanner}></meta>
           </Helmet>
