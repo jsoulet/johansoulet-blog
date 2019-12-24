@@ -1,5 +1,5 @@
 module.exports = {
-  siteTitle: 'Johan Soulet | Développeur sénior à Nantes', // <title>
+  siteTitle: 'Johan Soulet | Développeur JavaScript sénior à Nantes', // <title>
   manifestName: 'Johan Soulet',
   manifestShortName: '@johansoulet', // max 12 characters
   manifestStartUrl: '/',

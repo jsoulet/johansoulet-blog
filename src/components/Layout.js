@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
@@ -6,8 +6,10 @@ import cn from 'classnames'
 import { useIntl } from 'gatsby-plugin-intl'
 
 import '../assets/sass/main.scss'
+import metaBanner from '../assets/images/meta-banner.jpg'
 import Footer from './Footer'
 import SideBar from './Sidebar'
+import locales from '../../config/i18n/locales'
 
 let timeoutID = null
 const Layout = ({ children, fullMenu, isLanding, hideLocaleSwitcher = false }) => {
@@ -23,7 +25,7 @@ const Layout = ({ children, fullMenu, isLanding, hideLocaleSwitcher = false }) =
       }
     }
   }, [])
-
+  const { metadata } = locales[intl.locale]
   return (
     <StaticQuery
       query={graphql`
@@ -39,11 +41,15 @@ const Layout = ({ children, fullMenu, isLanding, hideLocaleSwitcher = false }) =
       `}
       render={data => (
         <>
-          <Helmet defaultTitle={data.site.siteMetadata.title}>
+          <Helmet titleTemplate={metadata.titleTemplate} defaultTitle={metadata.defaultTitle}>
             <html lang={intl.locale} />
-            <title>{data.site.siteMetadata.title}</title>
-            <meta name="description" content={data.site.siteMetadata.description} />
-            <meta name="keywords" content={data.site.siteMetadata.keywords} />
+            <meta name="description" content={metadata.description} />
+            <meta name="keywords" content={metadata.keywords} />
+            <meta property="og:title" content={metadata.defaultTitle}></meta>
+            <meta property="og:description" content={metadata.description}></meta>
+            <meta property="og:url" content={window.location.href}></meta>
+            <meta name="twitter:card" content="summary_large_image"></meta>
+            <meta property="og:image" content={metaBanner}></meta>
           </Helmet>
           <div className={cn({ 'main-body': true, landing: isLanding, 'is-preload': isPreloaded })}>
             <div id="page-wrapper">

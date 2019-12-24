@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import Layout from '../Layout'
 import Header from '../Header'
 import Image from '../Image'
@@ -23,10 +24,24 @@ const BlogBreadCrumb = ({ title, ...props }) => {
 }
 
 const BlogPost = ({ data, children, pageContext, ...props }) => {
-  const { frontmatter } = data.mdx
+  const { frontmatter, excerpt } = data.mdx
+  const metaTitle = frontmatter.title
+  const metaDescription = frontmatter.chapo || excerpt
   return (
     <Layout fullMenu hideLocaleSwitcher>
       <article id="main">
+        <Helmet>
+          <title>{metaTitle}</title>
+          <meta name="description" content={metaDescription} />
+          <meta property="og:title" content={metaTitle}></meta>
+          <meta property="og:description" content={metaDescription}></meta>
+          <meta property="og:url" content={window.location.href}></meta>
+          <meta name="twitter:card" content="summary_large_image"></meta>
+          <meta
+            property="og:image"
+            content={frontmatter.metaimage.childImageSharp.fixed.src}
+          ></meta>
+        </Helmet>
         <Header
           title={frontmatter.title}
           subtitle={frontmatter.date}
@@ -53,14 +68,23 @@ export const pageQuery = graphql`
     mdx(id: { eq: $id }) {
       id
       body
+      excerpt
       frontmatter {
         title
         lang
+        chapo
         date(formatString: "DD MMMM YYYY", locale: $locale)
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        metaimage: featuredImage {
+          childImageSharp {
+            fixed(width: 1200, height: 630) {
+              src
             }
           }
         }
