@@ -35,7 +35,7 @@ const BlogPost = ({ data, children, pageContext, ...props }) => {
           <meta name="description" content={metaDescription} />
           <meta property="og:title" content={metaTitle}></meta>
           <meta property="og:description" content={metaDescription}></meta>
-          <meta property="og:url" content={window.location.href}></meta>
+          <meta property="og:url" content={window ? window.location.href : ''}></meta>
           <meta name="twitter:card" content="summary_large_image"></meta>
           <meta
             property="og:image"
