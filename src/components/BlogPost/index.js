@@ -27,19 +27,18 @@ const BlogPost = ({ data, children, pageContext, ...props }) => {
   const { frontmatter, excerpt } = data.mdx
   const metaTitle = frontmatter.title
   const metaDescription = frontmatter.chapo || excerpt
+  const metaImage = `${data.site.siteMetadata.siteUrl}${frontmatter.metaimage.childImageSharp.fixed.src}`
   return (
     <Layout fullMenu hideLocaleSwitcher>
       <article id="main">
         <Helmet>
           <title>{metaTitle}</title>
           <meta name="description" content={metaDescription} />
+          <meta name="image" content={metaImage} />
           <meta property="og:title" content={metaTitle}></meta>
           <meta property="og:description" content={metaDescription}></meta>
           <meta name="twitter:card" content="summary_large_image"></meta>
-          <meta
-            property="og:image"
-            content={frontmatter.metaimage.childImageSharp.fixed.src}
-          ></meta>
+          <meta property="og:image" content={metaImage}></meta>
         </Helmet>
         <Header
           title={frontmatter.title}
@@ -64,6 +63,11 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostQuery($id: String, $locale: String) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     mdx(id: { eq: $id }) {
       id
       body

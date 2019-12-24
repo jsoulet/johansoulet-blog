@@ -5,6 +5,7 @@ module.exports = {
     default: true,
     dateFormat: 'DD/MM/YYYY',
     metadata: {
+      imageBaseUrl: 'https://johansoulet.fr',
       titleTemplate: '%s | Johan Soulet',
       defaultTitle: 'Johan Soulet | Développeur JavaScript à Nantes',
       description: 'Artisan du code, je donne vie à des projets qui rendent le monde meilleur',
@@ -17,6 +18,7 @@ module.exports = {
     default: false,
     dateFormat: 'DD/MM/YYYY',
     metadata: {
+      imageBaseUrl: 'https://johansoulet.fr',
       titleTemplate: '%s | Johan Soulet',
       defaultTitle: 'Johan Soulet | Javascript Developer in Nantes',
       description:

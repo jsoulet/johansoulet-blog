@@ -32,9 +32,8 @@ const Layout = ({ children, fullMenu, isLanding, hideLocaleSwitcher = false }) =
         query SiteTitleQuery {
           site {
             siteMetadata {
-              title
-              description
-              keywords
+              siteUrl
+              author
             }
           }
         }
@@ -45,10 +44,16 @@ const Layout = ({ children, fullMenu, isLanding, hideLocaleSwitcher = false }) =
             <html lang={intl.locale} />
             <meta name="description" content={metadata.description} />
             <meta name="keywords" content={metadata.keywords} />
+            <meta name="image" content={`${data.site.siteMetadata.siteUrl}${metaBanner}`} />
             <meta property="og:title" content={metadata.defaultTitle}></meta>
             <meta property="og:description" content={metadata.description}></meta>
             <meta name="twitter:card" content="summary_large_image"></meta>
-            <meta property="og:image" content={metaBanner}></meta>
+            <meta name="twitter:site" content={data.site.siteMetadata.author} />
+            <meta name="twitter:creator" content={data.site.siteMetadata.author} />
+            <meta
+              property="og:image"
+              content={`${data.site.siteMetadata.siteUrl}${metaBanner}`}
+            ></meta>
           </Helmet>
           <div className={cn({ 'main-body': true, landing: isLanding, 'is-preload': isPreloaded })}>
             <div id="page-wrapper">

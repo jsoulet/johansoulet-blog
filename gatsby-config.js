@@ -3,9 +3,6 @@ const config = require('./config')
 module.exports = {
   pathPrefix: config.pathPrefix,
   siteMetadata: {
-    title: 'Johan Soulet - Développeur JavaScript sénior à Nantes',
-    description: `Artisan du code, je donne vie à des projets qui rendent le monde meilleur`,
-    keywords: `javascript reactjs nodejs développeur`,
     author: `@JohanSoulet`,
     siteUrl: `https://johansoulet.fr`,
   },
