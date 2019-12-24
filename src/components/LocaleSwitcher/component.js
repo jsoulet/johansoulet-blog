@@ -15,8 +15,7 @@ const LocaleSwitcher = () => {
           return null
         }
         return (
-          // eslint-disable-next-line jsx-a11y/anchor-is-valid
-          <a href="#" onClick={onClickHandler(lang)} key={lang}>
+          <a href={`/${lang}`} onClick={onClickHandler(lang)} key={lang}>
             {locales[lang].name}
           </a>
         )
