@@ -2,9 +2,13 @@ import React from 'react'
 import { FormattedMessage, Link } from 'gatsby-plugin-intl'
 import Layout from '../components/Layout'
 import Breadcrumb from '../components/Breadcrumb'
+import Helmet from 'react-helmet'
 
 const TermsPage = () => (
   <Layout fullMenu>
+    <Helmet>
+      <meta name="robots" content="noindex" />
+    </Helmet>
     <article id="main">
       <header>
         <h1>
