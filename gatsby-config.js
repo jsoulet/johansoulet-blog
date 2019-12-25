@@ -7,6 +7,7 @@ module.exports = {
     siteUrl: `https://johansoulet.fr`,
   },
   plugins: [
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
