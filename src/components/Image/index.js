@@ -2,9 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-const Image = ({ children, alt = '', caption = '', align = 'fit', className = '', ...props }) => {
+const Image = ({
+  children,
+  alt = '',
+  caption = '',
+  align = 'fit',
+  className = '',
+  isSmall = false,
+  ...props
+}) => {
   return (
-    <div className={cn('image box', className, align)} {...props}>
+    <div className={cn('image box', className, align, { small: isSmall })} {...props}>
       {children}
       {caption && (
         <div className="align-center caption">
@@ -20,6 +28,7 @@ Image.propTypes = {
   alt: PropTypes.string,
   caption: PropTypes.string,
   className: PropTypes.string,
+  isSmall: PropTypes.bool,
   align: PropTypes.oneOf(['left', 'fit', 'right']),
 }
 
