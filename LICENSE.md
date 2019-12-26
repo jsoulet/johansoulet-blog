@@ -1,10 +1,8 @@
-Creative Commons Attribution 3.0
+You are free to use partial or complete code and architecture of this website for every project, except if your project can be juged as discriminatory based on the origin, the gender, the religion, the social class.
 
-https://html5up.net/license
+Usage of complete or partial elements of the blog posts can only be done without any modification of the content and if appropriation credit is given.
 
-All of the site templates I create for HTML5 UP are licensed under the Creative Commons Attribution 3.0 License, which means you can:
+Pictures that don't have their author credited are mine. Their usage is not.
+allowed
 
-Use them for personal stuff
-Use them for commercial stuff
-Change them however you like
-... all for free, yo. In exchange, just give HTML5 UP credit for the design and tell your friends about it :)
+The templates has been created by HTML5 UP and licensed under the Creative Commons Attribution 3.0 License.
