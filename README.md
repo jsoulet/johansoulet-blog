@@ -25,3 +25,25 @@ The repository contains my personal website, based on [Gatsby](https://www.gatsb
     - gatsby-source-filesystem
     - gatsby-transformer-remark
     - gatsby-transformer-sharp
+
+## Usage
+
+### Blog posts
+
+Blog posts should be created in the folder `/content/posts`
+Associated images should be added in `content/images`
+
+### i18n
+
+Internationalization configurations can be edited in `/config/i18n`
+Translated messages have to be in the folder `/config/i18n/messages` and named `[locale].json`
+
+### Commands
+
+#### For development
+
+`npm start`: clean cache folders and run Gatsby server
+
+#### For production
+
+`npm run build`: clean cache folders and build static pages in `/public`
