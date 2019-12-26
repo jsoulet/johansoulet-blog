@@ -31,7 +31,7 @@ const BlogPost = ({ data, children, pageContext, ...props }) => {
   const metaDescription = frontmatter.chapo || excerpt
   const metaImage = `${data.site.siteMetadata.siteUrl}${frontmatter.metaimage.childImageSharp.fixed.src}`
   const canonicalUrl = `${data.site.siteMetadata.siteUrl}/${locale}${fields.slug}`
-  console.log(canonicalUrl)
+
   return (
     <Layout fullMenu hideLocaleSwitcher>
       <article id="main">
