@@ -7,7 +7,7 @@ module.exports = {
   manifestThemeColor: '#242C33',
   manifestDisplay: 'standalone',
   manifestIcon: 'src/assets/img/favicon.png',
-  pathPrefix: `/`, // This path is subpath of your hosting https://domain/portfolio
+  pathPrefix: `/`,
   heading: 'Johan Soulet',
   subHeading: 'Développeur JavaScript sénior à Nantes',
   // social
