@@ -7,7 +7,12 @@ module.exports = {
     siteUrl: `https://johansoulet.fr`,
   },
   plugins: [
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['*/mentions-legales', '/Elements'],
+      },
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',

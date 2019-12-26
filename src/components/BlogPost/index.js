@@ -7,6 +7,7 @@ import Breadcrumb from '../Breadcrumb'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
+import { useIntl } from 'gatsby-plugin-intl'
 
 const shortcodes = { Image }
 
@@ -24,10 +25,13 @@ const BlogBreadCrumb = ({ title, ...props }) => {
 }
 
 const BlogPost = ({ data, children, pageContext, ...props }) => {
-  const { frontmatter, excerpt } = data.mdx
+  const { frontmatter, excerpt, fields } = data.mdx
+  const { locale } = useIntl()
   const metaTitle = frontmatter.title
   const metaDescription = frontmatter.chapo || excerpt
   const metaImage = `${data.site.siteMetadata.siteUrl}${frontmatter.metaimage.childImageSharp.fixed.src}`
+  const canonicalUrl = `${data.site.siteMetadata.siteUrl}/${locale}${fields.slug}`
+  console.log(canonicalUrl)
   return (
     <Layout fullMenu hideLocaleSwitcher>
       <article id="main">
@@ -39,6 +43,7 @@ const BlogPost = ({ data, children, pageContext, ...props }) => {
           <meta property="og:description" content={metaDescription}></meta>
           <meta name="twitter:card" content="summary_large_image"></meta>
           <meta property="og:image" content={metaImage}></meta>
+          <link rel="canonical" href={canonicalUrl}></link>
         </Helmet>
         <Header
           title={frontmatter.title}
@@ -72,6 +77,9 @@ export const pageQuery = graphql`
       id
       body
       excerpt
+      fields {
+        slug
+      }
       frontmatter {
         title
         lang
