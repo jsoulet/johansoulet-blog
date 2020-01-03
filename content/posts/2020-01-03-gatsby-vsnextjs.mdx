@@ -1,0 +1,82 @@
+---
+date: '2020-01-03'
+title: "Gatsby vs Next.js : le Mayweather vs McGregor du développement front-end"
+featuredImage: '../images/2020-01-03-gatsby-vsnextjs/fight.png'
+lang: fr
+---
+
+<Image align="right">
+
+![](../images/2020-01-03-gatsby-vsnextjs/fight.png)
+
+</Image>
+
+L'année dernière, il m'a été donnée l'opportunité de travailler à la fois avec [Gatsby](https://www.gatsbyjs.org/) et avec [Next.js](https://nextjs.org/). Tous deux basées sur ReactJS, ces framework créent une architecture normalisée et permettent d'accélérer la création de sites web, ainsi que de leur donner des super-pouvoirs pour améliorer l'accessibilité, le SEO et les performances.
+
+La popularité de ces deux frameworks est similaire à l'heure actuelle, Gatsby et Next.js ont respectivement 41.9k et 43k stars sur Github.
+
+## 🤝 Les points communs
+
+Avant de regarder ce qui oppose ces deux solutions, regardons ensemble leurs similarités qui existent entre Next.js et Gatsby.
+
+<Image isSmall>
+
+![](https://media.giphy.com/media/CHmwA02GQ6aTS/giphy.gif)
+
+</Image>
+
+### Courbe d'apprentissage
+
+Pour un•e dévelopeur•euse familier•ère avec React, la prise en main tant de Next.js ou Gatsby ne sera pas difficile. La documentation de ces deux frameworks est très bien faite et les vidéos ou articles sur le sujet sont légion.
+
+Grâce à des plateforme d'hébergement statiques comme Netlify, Gitlab Pages, Now.sh..., il sera de plus très facile de déployer le site créé. En quelques heures vous pouvez donc disposer d'un site web statique.
+
+### Outils de build intégrés
+
+La création d'une app avec React seule peut vite être prise de tête : il faut configurer Webpack, ajouter Babel pour utiliser les dernières fonctionnalités ES7, ajouter un système de minification pour les build en production, mettre en place du live-reload pour le développement...
+
+Ici, toutes ces questionnements sont résolus dès le départ et gérés de façon transparente par les outils de build intégrés. En laissant le•a développeur•euse se concentrer sur sa vraie valeur ajoutée, ces framework permettent une prise en main et un développement très rapide.
+
+### Génération automatiques de pages
+
+Les architectures Next.js comme Gatsby possèdent un dossier `/src/pages` où nativement, les composants qui y sont stockés seront transformés en pages et servies par le framework.
+
+Ainsi, le fichier `/src/pages/index.js` sera accessible à l'adresse `/` et le fichier `/src/pages/about.js` à l'adresse `/about`. L'arborescence sur plusieurs niveaux est aussi prise en charge de telle sorte que le fichier `/src/pages/posts/post-1.js` aura pour URL `/posts/post-1`.
+
+### Routing intégré
+
+Les deux frameork possèdent leur propre système de routing et de liens internes. Ils ont la particularité d'être tous deux basés sur [@reach/router](https://github.com/reach/router) de Ryan Florence.
+
+Parce qu'ils gèrent eux même le routing, ils offrent nativement du link-prefetching, accélérant ainsi l'impression de rapidité pour les utilisateurs finaux.
+
+## ⚔️ Ce qui les oppose
+
+<Image isSmall>
+
+![](https://media.giphy.com/media/Dea0leKapJzJC/giphy.gif)
+
+</Image>
+
+### Pré-rendering VS rendu côté serveur
+
+Si la différence est à peine perceptible pour les utilisateurs finaux, elle est cependant très importante d'un point de vue de développeur•euse. Les pages servies par Gatsby sont statiques car les données qui les alimentent ont été téléchargées au moment du build (nous reviendrons sur ce mécanisme par la suite). Ainsi, pour toute modification de contenu, il est nécessaire de repasser par une phase de build du site web.
+
+Next.js en revanche propose un rendu côté serveur. Cela signifie que les pages sont traitées par un serveur NodeJS au moment de la requête par le client et le HTML est envoyé tel quel. Une surcouche JavaScript va ensuite permettre de dynamiser le contenu ainsi récupéré.
+
+### Gestion des données
+
+Lors du build, Gatsby va donc récupérer les données depuis les différentes sources qui auront été mises à sa disposition (base de données, API, CMS Headess, fichiers markdown...) et les exposera aux pages au moyen d'une API gateway en GraphQL
+
+Next propose une surcharge aux composants React standards. En effet, pour chaque composant page, il est possible de définir une méthode asynchrone `getInitialProps` pour le composant. Elle sera exécutée avant le premier rendu afin d'alimenter le composant avec un jeu de données initiales. C'est donc dans cette méthode qu'il faudra effectuer les appels aux services externes.
+
+### Routing dynamique
+
+Depuis sa version 9, sortie à l'été 2019, Next.js intègre un système de routing dynamique qui utilise l'arborescence et un motif de nom de fichier. Ainsi, en nommant un fichier `pages/post/[slug].js` (le nom de fichier doit bien conserver les crochets tels quels), Next.js va automatiquement faire correspondre les URL de type `/posts/post-1` ou `/posts/1` au composant contenu dans le fichier. La valeur du slug sera alors accessible au sein du premier paramètre de la méthode `getInitialProps` et pourra être utilisée pour dynamiser les requêtes aux services externes.
+
+Quant à Gatsby, la création de pages à la volée reste un peu plus compliquée. Le fichier gatsby-node.js permet de surcharger les méthodes de build standard afin de créer des nouveaux noeuds GraphQL ou des pages. Parce que la documentation à ce sujet reste très bien conçue, cette opération ne comporte pas de difficulté majeure.
+
+## Quand les utiliser ?
+
+Si le contenu de votre app n'a pas besoin d'être mise à jour régulièrement (ex: blog, site institutionnel), il est conseillé d'utiliser Gatsby, puisque les requêtes seront effectuée au moment du build et non au requêtage par le visiteur, et d'utiliser Next.js si l'app repose sur des input utilisateurs dynamiques (ex: newsfeed).
+
+En revanche, comme votre app Gatsby reste basée sur une app React, il sera tout de même possible de brancher des API asynchrones, une architecture Redux, un client Apollo... afin d'appeler des services tiers lors du rendu côté client.
