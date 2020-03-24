@@ -82,6 +82,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
+    'gatsby-plugin-emotion',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
   ],

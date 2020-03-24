@@ -1,0 +1,96 @@
+---
+date: '2020-03-23'
+title: 'Natural sort order : trier un tableau comme un humain'
+featuredImage: '../images/2020-03-23-natural-sort-order/sort.jpg'
+lang: fr
+i18n:
+  - locale: en
+    slug: 2020-03-23-en-natural-sort-order
+---
+
+<Image align="right" caption="Photo par Brooke Lark sur Unsplash">
+
+![](../images/2020-03-23-natural-sort-order/sort.jpg)
+
+</Image>
+
+Lors de mes études d'ingénieur, j'ai du apprendre plusieurs algorithme de tri : quicksort, tri par tas, tri bulle... Pour être franc, je ne les ai utilisé qu'une seule fois par la suite. C'était lors d'un entretien pour décrocher mon premier job... et j'ai raté !
+
+Il est évident que pour manipuler des grandes quantité de données, ces algorithmes sont utiles. Les ayant déjà appris, il me sera plus facile de les mettre en pratique si la complexité des projets le demande. Pour l'instant, les données que j'ai eu besoin de manipuler étaient relativement petites et j'ai toujours réussi à m'en tenir aux méthodes standard de tri fournies par l'API JavaScript.
+
+Mais est-ce que j'utiliserai JavaScript pour trier des données provenant d'un énorme tableau ? Spoiler : je ne pense pas!
+
+## 1. Array.sort()
+
+La facon la plus simple de trier un tableau à l'aide de JavaScript est la méthode Array.sort().
+
+Elle converti les éléments de tableau en string et compare leur code UTC-16 pour les trier de façon croissante
+
+```js
+const days  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+days.sort()
+// > [ "Friday", "Monday", "Thursday", "Tuesday", "Wednesday" ]
+```
+
+C'est pratique pour trier un tableau de string, mais très limité lorsque vous devez travailler avec d'autres structures de données.
+
+```js
+const numbers = [1, 5, 23, 1001]
+numbers.sort()
+// > [ 1, 1001, 23, 5 ]
+
+
+const days = [{"name": "Monday"}, {"name": "Tuesday"}, {"name": "Wednesday"}, {"name": "Thursday"}, {"name": "Friday"}]
+days.sort()
+// > [{"name": "Monday"}, {"name": "Tuesday"}, {"name": "Wednesday"}, {"name": "Thursday"}, {"name": "Friday"}]
+// Hum... rien n'a changé
+```
+
+## 2. La fonction de comparaison d'Array.sort()
+
+Pour les données plus complexes, vous pouvez prendre la responsabilité d'indiquer à Array.sort comment trier les éléments du tableau. Le premier paramètre (optionel) est une fonction qui permet de comparer 2 éléments entre eux. Si elle renvoie une valeur négative, cela signifie que le permier élément passé en paramètres est plus grand que le 2nd et si la valeur est négative, c'est l'inverse. Si la valeur de retour est zéro, les 2 éléments seront considérés comme égaux.
+
+```js
+function compare(a, b) {
+  if (a is less than b by some ordering criterion) {
+    return -1;
+  }
+  if (a is greater than b by the ordering criterion) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
+}
+
+// src: developer.mozilla.org
+```
+
+Grâce à cette fonction de comparaison, il est ainsi possible de comparer des nombres, des chaines de caractères alphabétiques, des dates... Mais que se passe-t-il si vous devez comparer des chaines contenant à la fois des nombres et des lettres ?
+
+## 3. L'order de tri naturel (natural sort order)
+
+Le "natural sort order" est la façon la plus évidente qu'auront des humains de trier un tableau. Imaginons cette collection de meubles
+```js
+const furnitures = [
+  'Bed13',
+  'table2',
+  'chair3',
+  'Chair100',
+  'chair54',
+  'table123',
+  'Table36',
+  'Bed2',
+  'Chair4'
+    ]
+```
+
+Intl.Collator vous aidera à trier cette collection en créant un objet qui comparera les chaines de caractères en fonction de la langue que vous lui indiquez (pour ignorer certains signes de ponctuations spécifiques par exemple), et vous pourrez ajouter des options pour manipuler la comparaison de chaines alphabético-numériques. De cettes façon, les meubles pourront être triés dans un ordre que ma grand-mère (et vos clients) trouvera acceptable 👵🏻
+
+```js
+const collator = new Intl.Collator('fr-FR', { numeric: true })
+furnitures.sort(collator.compare)
+
+// > [ "Bed2", "Bed13", "chair3", "Chair4", "chair54", "Chair100", "table2", "Table36", "table123" ]
+```
+
+Pour en savoir plus sur les options d'Intl.Collator, je vous conseille la [documentation du MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Collator/Collator)

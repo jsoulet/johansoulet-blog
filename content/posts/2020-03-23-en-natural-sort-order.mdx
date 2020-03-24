@@ -1,0 +1,97 @@
+---
+date: '2020-03-23'
+title: 'Sorting arrays for humans with natural sort order'
+featuredImage: '../images/2020-03-23-natural-sort-order/sort.jpg'
+lang: en
+i18n:
+  - locale: fr
+    slug: 2020-03-23-fr-natural-sort-order
+---
+
+<Image align="right" caption="Picture by Brooke Lark on Unsplash">
+
+![](../images/2020-03-23-natural-sort-order/sort.jpg)
+
+</Image>
+
+As a computer engineering student, I had to learn several sort algorithms : quicksort, heap sort, bubble sort... To be honest, I only used them once, during a job interview when I was searching for my 1st job. An I failed!
+
+I can't deny they are useful when you deal with a really big amount of data, and as I learned them once, I would be more at ease with using them if the complexity requires one of them. From now, the amount of data I had to handle was always relatively small and I always managed to stick to JavaScript standard methods.
+
+By the way, would I use JavaScript to sort very big array? Spoiler(): I don't think so!
+
+## 1. Array.sort()
+
+The simplest way to sort an array in Javascript is by using Array.sort() method.
+
+It works by converting the array's elements into strings, compare their UTF-16 sequence and order them into ascending order.
+
+```js
+const days  = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+days.sort()
+// > [ "Friday", "Monday", "Thursday", "Tuesday", "Wednesday" ]
+```
+
+This is efficient for an ascending sort of a array of string but it is still very limited when dealing with other data structures
+
+```js
+const numbers = [1, 5, 23, 1001]
+numbers.sort()
+// > [ 1, 1001, 23, 5 ]
+
+
+const days = [{"name": "Monday"}, {"name": "Tuesday"}, {"name": "Wednesday"}, {"name": "Thursday"}, {"name": "Friday"}]
+days.sort()
+// > [{"name": "Monday"}, {"name": "Tuesday"}, {"name": "Wednesday"}, {"name": "Thursday"}, {"name": "Friday"}]
+// Hum... nothing changed
+```
+
+## 2. Array.sort() compare function
+
+For more complex data structures, you can get the responsibility to define how you want your items to be sorted. Array.sort has an function parameter (optional) which let you compare 2 elements of the array. If the function returns a negative number, it means the 1st element is bigger than the 2nd. If the return value is a positive number, the 2nd is is bigger than the 1st. Finally, if the result is zero, the 2 elements are considered as equal.
+
+```js
+function compare(a, b) {
+    if (a is less than b by some ordering criterion) {
+    return -1;
+    }
+    if (a is greater than b by the ordering criterion) {
+    return 1;
+    }
+    // a must be equal to b
+    return 0;
+}
+
+// src: developer.mozilla.org
+```
+
+Thanks to the compare function, you'll be able to compare numbers, alphabetical strings, dates... but what happens if you have to build a product that order strings containing letters and numbers ?
+
+## 3. Natural sort order
+
+Natural sort order is the most common way humans will orders elements. Imagine you have this collection of furnitures
+
+```js
+const furnitures = [
+    'Bed13',
+    'table2',
+    'chair3',
+    'Chair100',
+    'chair54',
+    'table123',
+    'Table36',
+    'Bed2',
+    'Chair4'
+]
+```
+
+Intl.Collator will help you sorting it by creating an object that can compare string according to the local (to ignore punctuation signs for instance), and you can add options to handle numeric comparisons. This way your furnitures can be sorted in a way my grandmother (and your client) would find acceptable ! 👵🏻
+
+```js
+const collator = new Intl.Collator('fr-FR', { numeric: true })
+furnitures.sort(collator.compare)
+
+// > [ "Bed2", "Bed13", "chair3", "Chair4", "chair54", "Chair100", "table2", "Table36", "table123" ]
+```
+
+For more details about the options of Intl.Collator, here is the link to [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Collator/Collator)

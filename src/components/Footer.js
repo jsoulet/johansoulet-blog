@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormattedMessage, Link } from 'gatsby-plugin-intl'
 import config from '../../config'
+
 export default function Footer() {
   return (
     <footer id="footer">

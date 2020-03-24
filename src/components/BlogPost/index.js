@@ -1,13 +1,14 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import Layout from '../Layout'
-import Header from '../Header'
-import Image from '../Image'
-import Breadcrumb from '../Breadcrumb'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
 import { useIntl } from 'gatsby-plugin-intl'
+import Layout from '../Layout'
+import Header from '../Header'
+import Image from '../Image'
+import Breadcrumb from '../Breadcrumb'
+import MultiLanguageLinks from './MultiLanguageLinks'
 
 const shortcodes = { Image }
 
@@ -18,7 +19,7 @@ const BlogBreadCrumb = ({ title, ...props }) => {
       links={[
         { label: 'breadcrumb.home', to: '/' },
         { label: 'breadcrumb.blog', to: '/blog' },
-        { label: title, isNotTranslated: true },
+        { label: title, doNotTranslate: true },
       ]}
     />
   )
@@ -53,10 +54,13 @@ const BlogPost = ({ data, children, pageContext, ...props }) => {
         <section className="wrapper style5">
           <div className="inner">
             <BlogBreadCrumb title={frontmatter.title} />
+            <MultiLanguageLinks links={frontmatter.i18n} />
+            <hr />
             <MDXProvider components={shortcodes}>
               <MDXRenderer>{data.mdx.body}</MDXRenderer>
             </MDXProvider>
-            <BlogBreadCrumb title={frontmatter.title} isBottom />
+            <hr />
+            <BlogBreadCrumb title={frontmatter.title} />
           </div>
         </section>
       </article>
@@ -91,6 +95,10 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        i18n {
+          locale
+          slug
         }
         metaimage: featuredImage {
           childImageSharp {
