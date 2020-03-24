@@ -7,7 +7,7 @@ const Container = styled.span({ fontStyle: 'italic' })
 
 const MultiLanguageLinks = ({ links }) => {
   useIntl()
-  if (!links?.length) {
+  if (!(links && links.length)) {
     return null
   }
   return (
