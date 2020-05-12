@@ -12,7 +12,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['*/mentions-legales', '/Elements'],
+        exclude: ['*/mentions-legales', '/terms-conditions'],
       },
     },
     'gatsby-plugin-react-helmet',
