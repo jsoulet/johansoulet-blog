@@ -40,6 +40,7 @@ export const pageQuery = graphql`
           locale
           slug
         }
+        noIndex
         metaimage: featuredImage {
           childImageSharp {
             fixed(width: 1200, height: 630) {
@@ -75,6 +76,7 @@ interface IPage {
         locale: string
         slug: string
       }[]
+      noIndex?: boolean
       metaimage?: {
         childImageSharp: {
           fixed: {
@@ -108,6 +110,7 @@ const MdxLayout: FC<{ data: IPage }> = ({ data }) => {
         description={data.mdx.frontmatter.chapo || data.mdx.excerpt}
         image={data.mdx.frontmatter.metaimage?.childImageSharp.fixed.src}
         slug={data.mdx.fields.slug}
+        noIndex={data.mdx.frontmatter?.noIndex}
       />
       <PageHero
         title={data.mdx.frontmatter.title}

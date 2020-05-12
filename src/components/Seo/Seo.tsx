@@ -17,7 +17,8 @@ const Seo: FC<{
   description?: string
   image?: string
   slug?: string
-}> = ({ title, image, description, slug }) => {
+  noIndex?: boolean
+}> = ({ title, image, description, slug, noIndex }) => {
   const intl = useIntl()
   const locale = intl.locale
   const { metadata }: ILocaleConfig = get(locales, locale, locales.fr)
@@ -57,6 +58,7 @@ const Seo: FC<{
         <meta key="1" property="og:image" content={`${site.siteMetadata.siteUrl}${image}`}></meta>,
       ]}
       {slug && <link rel="canonical" href={`${site.siteMetadata.siteUrl}/${locale}${slug}`} />}
+      {noIndex && <meta name="robots" content="noindex, nofollow"></meta>}
     </Helmet>
   )
 }
