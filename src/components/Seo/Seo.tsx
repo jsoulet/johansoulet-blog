@@ -37,10 +37,10 @@ const Seo: FC<{
   return (
     <Helmet titleTemplate={metadata.titleTemplate} defaultTitle={metadata.defaultTitle}>
       <html lang={intl.locale} />
-      {title && <title>{title}</title>}
-      <meta property="og:title" content={metadata.defaultTitle}></meta>
+      {<title>{metadata.defaultTitle || title}</title>}
+      <meta property="og:title" content={metadata.defaultTitle || title}></meta>
       <meta name="description" content={description || metadata.description} />
-      <meta property="og:description" content={metadata.description}></meta>
+      <meta property="og:description" content={description || metadata.description}></meta>
       <meta name="twitter:card" content="summary_large_image"></meta>
       <meta name="twitter:site" content={site.siteMetadata.author} />
       <meta name="twitter:creator" content={site.siteMetadata.author} />
