@@ -7,9 +7,8 @@ module.exports = {
     metadata: {
       imageBaseUrl: 'https://johansoulet.fr',
       titleTemplate: '%s | Johan Soulet',
-      defaultTitle: 'Johan Soulet | Développeur JavaScript à Nantes',
-      description: 'Artisan du code, je donne vie à des projets qui rendent le monde meilleur',
-      keywords: 'développeur nantes, développeur javascript, reactjs, nodejs',
+      defaultTitle: 'Johan Soulet | Développeur JavaScript freelance à Nantes',
+      description: `Développeur freelance senior à Nantes, spécialisé dans le développement d'applications métier complexe avec JavaScript, React et NodeJS`,
     },
   },
   en: {
@@ -20,10 +19,9 @@ module.exports = {
     metadata: {
       imageBaseUrl: 'https://johansoulet.fr',
       titleTemplate: '%s | Johan Soulet',
-      defaultTitle: 'Johan Soulet | Javascript Developer in Nantes',
+      defaultTitle: 'Johan Soulet | Freelance JavaScript developer in Nantes',
       description:
-        'Convinced by software craftmanship, I give birth to projects that make the world a better place',
-      keywords: 'developer nantes, javascript developer, reactjs, nodejs',
+        'Senior freelance developer from in Nantes, France, specialized in complex business app development with JavaScript, React and NodeJS',
     },
   },
 }

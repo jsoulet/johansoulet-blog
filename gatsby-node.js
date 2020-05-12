@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
+const get = require('lodash/get')
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -10,6 +12,19 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value: path,
     })
+    createNodeField({
+      name: 'instanceName',
+      node,
+      value: node.sourceInstanceName,
+    })
+  }
+
+  if (node.internal.type === 'File') {
+    createNodeField({
+      name: 'instanceName',
+      node,
+      value: node.sourceInstanceName,
+    })
   }
 }
 
@@ -18,18 +33,21 @@ exports.onCreatePage = ({ page, actions }) => {
 
   return new Promise(resolve => {
     deletePage(page)
-
-    // Create localized pages for all static views and blog post in their language
+    // Generate page for MDX content only for their language
     // (ie: prevent for creating a /en/... route for a post in French)
-    if (page.context.type !== 'blog' || page.context.locale === page.context.intl.language) {
-      createPage({
-        ...page,
-        context: {
-          ...page.context,
-          locale: page.context.intl.language,
-        },
-      })
+    if (
+      ['studies', 'pages', 'posts'].includes(page.context.type) &&
+      page.context.locale !== page.context.intl.language
+    ) {
+      return resolve()
     }
+    createPage({
+      ...page,
+      context: {
+        ...page.context,
+        locale: page.context.intl.language || page.context.intl.defaultLanguage,
+      },
+    })
     resolve()
   })
 }
@@ -38,9 +56,12 @@ exports.createPages = async ({ graphql, actions, reporter, page }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allMdx {
-        edges {
-          node {
+      allFile {
+        nodes {
+          fields {
+            instanceName
+          }
+          childMdx {
             id
             fields {
               slug
@@ -57,15 +78,18 @@ exports.createPages = async ({ graphql, actions, reporter, page }) => {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
   }
 
-  const posts = result.data.allMdx.edges
-  posts.forEach(({ node }, index) => {
+  const files = result.data.allFile.nodes
+  files.forEach(file => {
+    if (!file.childMdx) {
+      return
+    }
     createPage({
-      path: node.fields.slug,
-      component: path.resolve(`./src/components/BlogPost/index.js`),
+      path: file.childMdx.fields.slug,
+      component: path.resolve(`./src/components/MdxLayout/index.tsx`),
       context: {
-        id: node.id,
-        locale: node.frontmatter.lang,
-        type: 'blog',
+        id: file.childMdx.id,
+        locale: file.childMdx.frontmatter.lang,
+        type: file.fields.instanceName,
       },
     })
   })
