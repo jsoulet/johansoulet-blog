@@ -1,0 +1,22 @@
+[
+  {
+    "content": {
+      "fr": "La peur est le chemin vers le côté obscur: la peur mène à la colère,  le colère mène à la haine, la haine mène à la souffrance.",
+      "en": "Fear is the path to the dark side. Fear leads to anger. Anger leads to hate."
+    },
+    "name": "Yoda",
+    "avatar": "yoda.jpg",
+    "value": 4,
+    "published": true
+  },
+  {
+    "content": {
+      "fr": "Le héros peut être en chacun, même en celui qui fait une chose aussi simple et rassurante que mettre un manteau sur les épaules d'un garçon et ainsi lui faire comprendre que le monde ne s'est pas écroulé.",
+      "en": "A hero can be anyone. Even a man doing something as simple and reassuring as putting a coat around a young boy's shoulders to let him know that the world hadn't ended."
+    },
+    "name": "Batman",
+    "avatar": "batman.jpg",
+    "value": 5,
+    "published": true
+  }
+]

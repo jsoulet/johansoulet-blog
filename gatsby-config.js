@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/camelcase */
 const config = require('./config')
 
 module.exports = {
@@ -14,11 +16,32 @@ module.exports = {
       },
     },
     'gatsby-plugin-react-helmet',
+    'gatsby-transformer-json',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/data/`,
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',
         path: `${__dirname}/content/posts/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: `${__dirname}/content/pages/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'studies',
+        path: `${__dirname}/content/studies/`,
       },
     },
     {
@@ -32,10 +55,12 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
+          'gatsby-source-instance-name-for-remark',
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1200,
+              maxWidth: 1024,
+              linkImagesToOriginal: false,
             },
           },
           'gatsby-remark-slug',
@@ -53,7 +78,7 @@ module.exports = {
         ],
         plugins: [`gatsby-remark-images`],
         defaultLayouts: {
-          default: require.resolve('./src/components/BlogPost/index.js'),
+          default: require.resolve('./src/components/MdxLayout/index.tsx'),
         },
       },
     },
@@ -78,10 +103,29 @@ module.exports = {
         icon: config.manifestIcon, // This path is relative to the root of the site.
       },
     },
-
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true,
+      },
+    },
+    'gatsby-plugin-typescript-checker',
+    {
+      resolve: `gatsby-alias-imports`,
+      options: {
+        aliases: {
+          components: `src/components`,
+          pages: `src/pages`,
+          utils: `src/utils`,
+          assets: `src/assets`,
+        },
+      },
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
+    'gatsby-plugin-postcss',
     'gatsby-plugin-emotion',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',

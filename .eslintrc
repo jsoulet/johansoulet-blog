@@ -1,25 +1,36 @@
 {
   "env": { "browser": true, "es6": true, "node": true, "jest": true },
   "extends": [
-    "standard",
-    "react-app",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "plugin:cypress/recommended"
+    "prettier/@typescript-eslint",
+    "plugin:react/recommended"
   ],
   "globals": { "Atomics": "readonly", "SharedArrayBuffer": "readonly" },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": { "jsx": true, "legacyDecorators": true },
+    "ecmaFeatures": { "jsx": true },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["standard", "react", "prettier", "cypress"],
+  "plugins": ["standard", "react", "cypress"],
   "rules": {
-    "prefer-promise-reject-errors": 0,
-    "quotes": [
+    "@typescript-eslint/member-delimiter-style": [
       "error",
-      "single",
-      { "avoidEscape": true, "allowTemplateLiterals": true }
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": false
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        }
+      }
     ],
+    "react/prop-types": "off",
+    "prefer-promise-reject-errors": 0,
+    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
     "max-len": [
       "error",
       {
@@ -41,6 +52,19 @@
         "exports": "always-multiline",
         "functions": "only-multiline"
       }
-    ]
-  }
+    ],
+    // @typescript-eslint/interface-name-prefix is deprecated
+    "@typescript-eslint/interface-name-prefix": "off",
+    // disable the rule for all files
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["error"]
+      }
+    }
+  ]
 }
