@@ -55,7 +55,7 @@ const Navbar: FC<{ i18nLinks?: Ii18nLink[]; hideToogleLocale?: boolean }> = ({
   return (
     <nav
       css={[
-        tw`bg-white shadow-lg md:shadow-none flex items-center w-full flex-col py-2 px-0`,
+        tw`bg-white shadow-lg md:shadow-none flex items-center w-full flex-col py-2 px-0 cursor-pointer`,
         tw`md:bg-transparent md:shadow-none items-stretch md:flex-row md:py-4 md:px-4`,
         /* eslint-disable prettier/prettier */
         isFloating &&

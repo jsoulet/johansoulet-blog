@@ -12,7 +12,7 @@ const onClickHandler = (lang: string) => (e: React.MouseEvent<HTMLAnchorElement>
 }
 
 const linkStyle = [
-  tw`underline`,
+  tw`underline cursor-pointer`,
   css({
     textDecorationStyle: 'dashed',
   }),

@@ -24,7 +24,7 @@
 }
 
 .article a:not(.button) {
-  @apply text-blue-600 font-semibold;
+  @apply text-blue-600 font-semibold cursor-pointer;
 }
 
 .article strong a {
