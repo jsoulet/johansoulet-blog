@@ -65,16 +65,16 @@ module.exports = {
           },
           'gatsby-remark-slug',
           // 'gatsby-remark-autolink-headings',
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
-          },
+          // {
+          //   resolve: `gatsby-remark-prismjs`,
+          //   options: {
+          //     classPrefix: 'language-',
+          //     inlineCodeMarker: null,
+          //     aliases: {},
+          //     showLineNumbers: false,
+          //     noInlineHighlight: false,
+          //   },
+          // },
         ],
         plugins: [`gatsby-remark-images`],
         defaultLayouts: {
@@ -110,7 +110,7 @@ module.exports = {
         allExtensions: true,
       },
     },
-    'gatsby-plugin-typescript-checker',
+    // 'gatsby-plugin-typescript-checker',
     {
       resolve: `gatsby-alias-imports`,
       options: {

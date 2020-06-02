@@ -5,7 +5,17 @@
       "en": "We had a need for reinforcement on a front-end / architecture mission for our client Creative Bot and we called  Johan on. His expertise and adaptability have made possible to exceed our objectives and fully satisfy the client. The product comes out grown, both technically but also from a UX point of view."
     },
     "name": "Pierre-Alexis NICOLAS",
-    "avatar": "pan.jpeg",
+    "avatar": "pan.jpg",
+    "value": 5,
+    "published": true
+  },
+  {
+    "content": {
+      "fr": "J'avais besoin d'un site vitrine pour présenter mon activité afin que mes patients puissent mieux comprendre mon travail et mes pratiques. Johan a su cibler mes besoins pour me proposer une réponse adaptée. Il m'a aussi conseillé sur des points importants que je n'avais pas pris en compte initialement. Grâce à ce site j'ai pu augmenter ma visibilité et je passe maintenant moins de temps au téléphone. Je suis très satisfaite tant de son design que des conseils de mise en page qui m'ont été apportés.",
+      "en": "I needed a showcase website to present my office so my patients can understand my job and my practices. Johan managed to target my needs and offer a suitable anwser. He also adviced me on important points I didn't anticipate. Thanks to this website, I gained in visibility and I can now spend less time on the phone. I am very pleased both on the design and on the advice about layout I've been given."
+    },
+    "name": "Morgane Gionnet",
+    "avatar": "morganegionnet.jpg",
     "value": 5,
     "published": true
   },
