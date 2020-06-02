@@ -1,6 +1,16 @@
 [
   {
     "content": {
+      "fr": "Nous avons eu un besoin de renfort sur une mission front-end/architecture pour notre client Creative Bot et avons fait appel à Johan. Son expertise et sa faculté d'adaptation ont permis de dépasser nos objectifs et de pleinement satisfaire le client. Le produit en sort grandi également, à la fois techniquement mais aussi d'un point de vue UX.",
+      "en": "We had a need for reinforcement on a front-end / architecture mission for our client Creative Bot and we called  Johan on. His expertise and adaptability have made possible to exceed our objectives and fully satisfy the client. The product comes out grown, both technically but also from a UX point of view."
+    },
+    "name": "Pierre-Alexis NICOLAS",
+    "avatar": "pan.jpeg",
+    "value": 5,
+    "published": true
+  },
+  {
+    "content": {
       "fr": "La peur est le chemin vers le côté obscur: la peur mène à la colère,  le colère mène à la haine, la haine mène à la souffrance.",
       "en": "Fear is the path to the dark side. Fear leads to anger. Anger leads to hate."
     },
