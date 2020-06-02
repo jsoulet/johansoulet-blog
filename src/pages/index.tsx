@@ -32,7 +32,7 @@ export const pageQuery = graphql`
     testimonialAvatars: allFile(filter: { relativePath: { regex: "/testimonials//" } }) {
       nodes {
         childImageSharp {
-          fixed(height: 62, width: 62, quality: 50) {
+          fixed(height: 62, width: 62, quality: 80) {
             ...GatsbyImageSharpFixed
           }
         }
